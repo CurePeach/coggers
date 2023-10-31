@@ -165,3 +165,46 @@ export enum ChampionName {
   Zoe,
   Zyra,
 }
+
+export const convert = (key: ChampionName) => {
+  switch (key) {
+    case ChampionName.Aatrox:
+      return 'Aatrox';
+    case ChampionName.Amumu:
+      return 'Amumu';
+    case ChampionName.Aphelios:
+      return 'Aphelios';
+    case ChampionName.Ashe:
+      return 'Ashe';
+    case ChampionName.Bard:
+      return 'Bard';
+    case ChampionName.Evelynn:
+      return 'Evelynn';
+    case ChampionName.Gangplank:
+      return 'Gangplank';
+    case ChampionName.Graves:
+      return 'Graves';
+    case ChampionName.Kennen:
+      return 'Kennen';
+    case ChampionName.Jhin:
+      return 'Jhin';
+    case ChampionName.Lissandra:
+      return 'Lissandra';
+    case ChampionName.Lux:
+      return 'Lux';
+    case ChampionName.Mordekaiser:
+      return 'Mordekaiser';
+    case ChampionName.Syndra:
+      return 'Syndra';
+    case ChampionName.Taliyah:
+      return 'Taliyah';
+    case ChampionName.Tristana:
+      return 'Tristana';
+    case ChampionName.Vayne:
+      return 'Vayne';
+    case ChampionName.Viktor:
+      return 'Viktor';
+  }
+
+  return `Not added yet: ${key}`;
+};
