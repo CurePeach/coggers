@@ -1,4 +1,4 @@
-import { ChampionName, ExtraMatchProperties, MatchDto, PlayerName } from "./types";
+import { ChampionName, ExtraMatchProperties, MatchDto, PlayerName } from './types';
 
 export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
   {
@@ -7,37 +7,28 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
     win: 'red',
     mvp: PlayerName.NightRaven,
     ace: PlayerName.JemLem,
-    draft: { 
+    draft: {
       bans: {
         blue: [
-          [ChampionName.Aatrox], 
-          [ChampionName.Jhin], 
-          [ChampionName.Gangplank], 
-          [ChampionName.Tristana], 
-          [ChampionName.Kennen]
+          [ChampionName.Aatrox],
+          [ChampionName.Jhin],
+          [ChampionName.Gangplank],
+          [ChampionName.Tristana],
+          [ChampionName.Kennen],
         ],
         red: [
-          [ChampionName.Mordekaiser], 
-          [ChampionName.Viktor], 
-          [ChampionName.Syndra], 
-          [ChampionName.Lux], 
-          [ChampionName.Lissandra]
+          [ChampionName.Mordekaiser],
+          [ChampionName.Viktor],
+          [ChampionName.Syndra],
+          [ChampionName.Lux],
+          [ChampionName.Lissandra],
         ],
-      }, 
+      },
       picks: {
-        blue: [
-          ChampionName.Bard, 
-          ChampionName.Taliyah, 
-          ChampionName.Amumu, 
-          ChampionName.Evelynn
-        ],
-        red: [
-          ChampionName.Aphelios, 
-          ChampionName.Vayne, 
-          ChampionName.Graves, 
-          ChampionName.Ashe
-        ],
-    }},
+        blue: [ChampionName.Bard, ChampionName.Taliyah, ChampionName.Amumu, ChampionName.Evelynn],
+        red: [ChampionName.Aphelios, ChampionName.Vayne, ChampionName.Graves, ChampionName.Ashe],
+      },
+    },
     teams: {
       blue: {
         captain: PlayerName.ThePretender,
@@ -123,5 +114,5 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
       },
     },
     dragonSoul: 'ocean',
-  }
+  },
 ];
