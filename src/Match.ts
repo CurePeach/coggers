@@ -31,7 +31,8 @@ export class Match {
       this.getPlayerNames(this.redTeam)
     );
 
-    for (const player of players) {
+    const presentPlayers: Player[] = players.filter((player) => allPlayers.includes(player.key));
+    for (const player of presentPlayers) {
       if (player.key === this.mvp) {
         player.numMvps += 1;
       } else if (player.key === this.ace) {
