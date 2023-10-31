@@ -18,6 +18,12 @@ function App() {
     match.updatePlayerData(players);
   }
 
+  for (const player of players) {
+    if (player.numGames > 0) {
+      player.print();
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
