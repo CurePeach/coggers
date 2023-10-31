@@ -1,3 +1,5 @@
+import { PlayerName } from './players';
+
 export type MatchDto = {
   date: Date;
   effect: string;
@@ -39,28 +41,6 @@ export type PlayerDto = {
   assists: number;
   cs: number;
 };
-
-export enum PlayerName {
-  Applesmustdie,
-  Boundless,
-  CureLemonade,
-  Delucidationer,
-  Draghau,
-  edmododragon,
-  ElVaux,
-  JemLem,
-  NightRaven,
-  NVRPY,
-  RayOfGayshine,
-  Roland,
-  SatanBlaze,
-  Sewerslvt,
-  Sharpaim,
-  summon3r000,
-  summon3r003,
-  Taikutsu,
-  ThePretender,
-}
 
 export enum ChampionName {
   Aatrox,
@@ -229,3 +209,4 @@ export enum ChampionName {
   Zoe,
   Zyra,
 }
+export { PlayerName };
