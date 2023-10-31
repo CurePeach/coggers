@@ -61,4 +61,6 @@ export const convert = (key: PlayerName): string => {
     case PlayerName.ThePretender:
       return 'The Pretender';
   }
+
+  return `Not added yet: ${key}`;
 };
