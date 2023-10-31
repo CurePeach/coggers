@@ -18,4 +18,4 @@ export enum PlayerName {
   summon3r003,
   Taikutsu,
   ThePretender,
-};
+}

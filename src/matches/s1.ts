@@ -1,4 +1,6 @@
-import { ChampionName, ExtraMatchProperties, MatchDto, PlayerName } from './types';
+import { ExtraMatchProperties, MatchDto } from './types';
+import { PlayerName } from './players';
+import { ChampionName } from './champions';
 
 export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
   {
