@@ -47,6 +47,21 @@ export class Match {
         player.numGames += 1;
       }
     }
+
+    const gameData = this.blueTeam.players.concat(this.redTeam.players);
+    for (const data of gameData) {
+      const player = presentPlayers.find((player) => player.key === data.name);
+      player?.gamesList.push({
+        date: this.date,
+        champion: data.champion,
+        role: data.role,
+        kills: data.kills,
+        deaths: data.deaths,
+        assists: data.assists,
+        cs: data.cs,
+      });
+      console.log(player);
+    }
   }
 
   private getWinningTeam(): TeamDto {
