@@ -208,3 +208,15 @@ export const convert = (key: ChampionName) => {
 
   return `Not added yet: ${key}`;
 };
+
+export const championsStartsWith = (str: string): ChampionName[] => {
+  const allChampionNames = Object.keys(ChampionName).filter((key) => isNaN(Number(key)));
+  const result: ChampionName[] = [];
+  allChampionNames.forEach((key, value) => {
+    if (key.toString().startsWith(str)) {
+      result.push(value);
+    }
+  });
+
+  return result;
+};
