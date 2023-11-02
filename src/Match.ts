@@ -1,5 +1,5 @@
 import { Player } from './Player';
-import { PlayerName, convert } from './matches/players';
+import { PlayerName } from './matches/players';
 import { DraftDto, MatchDto, TeamDto } from './matches/types';
 
 export class Match {
@@ -60,7 +60,6 @@ export class Match {
         assists: data.assists,
         cs: data.cs,
       });
-      console.log(player);
     }
   }
 
