@@ -166,47 +166,49 @@ export enum ChampionName {
   Zyra,
 }
 
+export const championNames: string[] = Object.keys(ChampionName).filter((key) =>
+  isNaN(Number(key))
+);
+
 export const convert = (key: ChampionName) => {
   switch (key) {
-    case ChampionName.Aatrox:
-      return 'Aatrox';
-    case ChampionName.Amumu:
-      return 'Amumu';
-    case ChampionName.Aphelios:
-      return 'Aphelios';
-    case ChampionName.Ashe:
-      return 'Ashe';
-    case ChampionName.Bard:
-      return 'Bard';
-    case ChampionName.Evelynn:
-      return 'Evelynn';
-    case ChampionName.Gangplank:
-      return 'Gangplank';
-    case ChampionName.Graves:
-      return 'Graves';
-    case ChampionName.Kennen:
-      return 'Kennen';
-    case ChampionName.Jhin:
-      return 'Jhin';
-    case ChampionName.Lissandra:
-      return 'Lissandra';
-    case ChampionName.Lux:
-      return 'Lux';
-    case ChampionName.Mordekaiser:
-      return 'Mordekaiser';
-    case ChampionName.Syndra:
-      return 'Syndra';
-    case ChampionName.Taliyah:
-      return 'Taliyah';
-    case ChampionName.Tristana:
-      return 'Tristana';
-    case ChampionName.Vayne:
-      return 'Vayne';
-    case ChampionName.Viktor:
-      return 'Viktor';
+    case ChampionName.AurelionSol:
+      return 'Aurelion Sol';
+    case ChampionName.BelVeth:
+      return "Bel'Veth";
+    case ChampionName.ChoGath:
+      return "Cho'Gath";
+    case ChampionName.DrMundo:
+      return 'Dr. Mundo';
+    case ChampionName.JarvanIV:
+      return 'Jarvan IV';
+    case ChampionName.KSante:
+      return "K'Sante";
+    case ChampionName.KaiSa:
+      return "Kai'Sa";
+    case ChampionName.KogMaw:
+      return "Kog'Maw";
+    case ChampionName.LeeSin:
+      return 'Lee Sin';
+    case ChampionName.MasterYi:
+      return 'Master Yi';
+    case ChampionName.MissFortune:
+      return 'Miss Fortune';
+    case ChampionName.NunuWillump:
+      return 'Nunu & Willump';
+    case ChampionName.RenataGlasc:
+      return 'Renata Glasc';
+    case ChampionName.TahmKench:
+      return 'Tahm Kench';
+    case ChampionName.TwistedFate:
+      return 'Twisted Fate';
+    case ChampionName.VelKoz:
+      return "Vel'Koz";
+    case ChampionName.XinZhao:
+      return 'Xin Zhao';
+    default:
+      return championNames[key];
   }
-
-  return `Not added yet: ${key}`;
 };
 
 export const championsStartsWith = (str: string): ChampionName[] => {
