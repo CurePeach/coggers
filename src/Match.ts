@@ -1,4 +1,5 @@
 import { Player } from './Player';
+import { PlayerPair } from './PlayerPair';
 import { PlayerName } from './matches/players';
 import { DraftDto, MatchDto, TeamDto } from './matches/types';
 
@@ -25,11 +26,10 @@ export class Match {
     this.redTeam = match.teams.red;
   }
 
-  updatePlayerData(players: Player[]) {
+  updatePlayerData(players: Player[], playerPairs: PlayerPair[]) {
     const winningPlayers: PlayerName[] = this.getPlayerNames(this.getWinningTeam());
-    const allPlayers: PlayerName[] = this.getPlayerNames(this.blueTeam).concat(
-      this.getPlayerNames(this.redTeam)
-    );
+    const losingPlayers: PlayerName[] = this.getPlayerNames(this.getLosingTeam());
+    const allPlayers: PlayerName[] = winningPlayers.concat(losingPlayers);
 
     const presentPlayers: Player[] = players.filter((player) => allPlayers.includes(player.key));
     for (const player of presentPlayers) {
@@ -61,6 +61,21 @@ export class Match {
         cs: data.cs,
       });
     }
+
+    const winningPairs: PlayerPair[] = playerPairs.filter(
+      (pair) => winningPlayers.includes(pair.keys[0]) && winningPlayers.includes(pair.keys[1])
+    );
+    for (const pair of winningPairs) {
+      pair.numGames += 1;
+      pair.numWins += 1;
+    }
+
+    const losingPairs: PlayerPair[] = playerPairs.filter(
+      (pair) => losingPlayers.includes(pair.keys[0]) && losingPlayers.includes(pair.keys[1])
+    );
+    for (const pair of losingPairs) {
+      pair.numGames += 1;
+    }
   }
 
   private getWinningTeam(): TeamDto {
@@ -69,6 +84,14 @@ export class Match {
     }
 
     return this.redTeam;
+  }
+
+  private getLosingTeam(): TeamDto {
+    if (this.win === 'blue') {
+      return this.redTeam;
+    }
+
+    return this.blueTeam;
   }
 
   private getPlayerNames(team: TeamDto): PlayerName[] {

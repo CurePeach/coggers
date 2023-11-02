@@ -1,4 +1,4 @@
-import { PlayerName } from './matches/players';
+import { PlayerName, convert } from './matches/players';
 
 export class PlayerPair {
   keys: [PlayerName, PlayerName];
@@ -8,5 +8,10 @@ export class PlayerPair {
 
   constructor(p1: PlayerName, p2: PlayerName) {
     this.keys = [p1, p2];
+  }
+
+  print() {
+    console.log(`Pair ${convert(this.keys[0])} and ${convert(this.keys[1])}`);
+    console.log(`Winrate: ${this.numWins / this.numGames} (${this.numWins} / ${this.numGames})`);
   }
 }

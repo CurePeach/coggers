@@ -21,12 +21,18 @@ function App() {
 
   for (const matchDto of matchesS1) {
     const match = new Match(matchDto);
-    match.updatePlayerData(players);
+    match.updatePlayerData(players, playerPairs);
   }
 
   for (const player of players) {
     if (player.numGames > 0) {
       player.print();
+    }
+  }
+
+  for (const pair of playerPairs) {
+    if (pair.numGames > 0) {
+      pair.print();
     }
   }
 
