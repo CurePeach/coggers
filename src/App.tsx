@@ -2,13 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Player } from './Player';
-import { PlayerName } from './matches/players';
+import { playerNames } from './matches/players';
 import { matchesS1 } from './matches/s1';
 import { Match } from './Match';
 
 function App() {
   const players: Player[] = [];
-  const playerNames = Object.keys(PlayerName).filter((key) => isNaN(Number(key)));
   playerNames.forEach((key, value) => {
     players.push(new Player(value));
   });
