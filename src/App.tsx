@@ -5,11 +5,18 @@ import { Player } from './Player';
 import { playerIds } from './matches/players';
 import { matchesS1 } from './matches/s1';
 import { Match } from './Match';
+import { PlayerPair } from './PlayerPair';
 
 function App() {
   const players: Player[] = [];
-  playerIds.forEach((id) => {
+  const playerPairs: PlayerPair[] = [];
+  playerIds.forEach((id, index) => {
     players.push(new Player(id));
+
+    const otherIds = playerIds.slice(index + 1);
+    for (const id2 of otherIds) {
+      playerPairs.push(new PlayerPair(id, id2));
+    }
   });
 
   for (const matchDto of matchesS1) {
