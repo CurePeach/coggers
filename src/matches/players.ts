@@ -22,6 +22,11 @@ export enum PlayerName {
 
 export const playerNames = Object.keys(PlayerName).filter((key) => isNaN(Number(key)));
 
+// TODO: this `as PlayerName[]` typecast is bad - Typescript can't imply the type without it
+export const playerIds = Object.values(PlayerName).filter(
+  (key) => !isNaN(Number(key))
+) as PlayerName[];
+
 export const convert = (key: PlayerName): string => {
   switch (key) {
     case PlayerName.CureLemonade:

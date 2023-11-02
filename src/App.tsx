@@ -2,14 +2,14 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Player } from './Player';
-import { playerNames } from './matches/players';
+import { playerIds } from './matches/players';
 import { matchesS1 } from './matches/s1';
 import { Match } from './Match';
 
 function App() {
   const players: Player[] = [];
-  playerNames.forEach((key, value) => {
-    players.push(new Player(value));
+  playerIds.forEach((id) => {
+    players.push(new Player(id));
   });
 
   for (const matchDto of matchesS1) {
