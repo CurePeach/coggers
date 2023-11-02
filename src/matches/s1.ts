@@ -1,4 +1,6 @@
-import { ChampionName, ExtraMatchProperties, MatchDto, PlayerName } from './types';
+import { ExtraMatchProperties, MatchDto } from './types';
+import { PlayerName } from './players';
+import { ChampionName, championsStartsWith } from './champions';
 
 export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
   {
@@ -114,5 +116,119 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
       },
     },
     dragonSoul: 'ocean',
+  },
+  {
+    date: new Date('2022-12-7'),
+    effect: 'Character Bans',
+    win: 'red',
+    mvp: PlayerName.Sewerslvt,
+    ace: PlayerName.Sharpaim,
+    draft: {
+      bans: {
+        blue: [
+          championsStartsWith('K'),
+          championsStartsWith('V'),
+          championsStartsWith('S'),
+          championsStartsWith('N'),
+          championsStartsWith('J'),
+        ],
+        red: [
+          championsStartsWith('A'),
+          championsStartsWith('G'),
+          championsStartsWith('T'),
+          championsStartsWith('E'),
+          championsStartsWith('L'),
+        ],
+      },
+      picks: {
+        blue: [ChampionName.Warwick, ChampionName.Jax, ChampionName.Ekko, ChampionName.Xayah],
+        red: [ChampionName.Wukong, ChampionName.Ornn, ChampionName.Lux, ChampionName.Pantheon],
+      },
+    },
+    teams: {
+      blue: {
+        captain: PlayerName.NightRaven,
+        players: [
+          {
+            name: PlayerName.NightRaven,
+            champion: ChampionName.Jax,
+            role: 'top',
+            kills: 4,
+            deaths: 6,
+            assists: 8,
+            cs: 219,
+          },
+          {
+            name: PlayerName.Sharpaim,
+            champion: ChampionName.Warwick,
+            role: 'jungle',
+            kills: 11,
+            deaths: 8,
+            assists: 8,
+            cs: 142,
+          },
+          {
+            name: PlayerName.Taikutsu,
+            champion: ChampionName.Ekko,
+            role: 'mid',
+            kills: 8,
+            deaths: 7,
+            assists: 6,
+            cs: 156,
+          },
+          {
+            name: PlayerName.Draghau,
+            champion: ChampionName.Xayah,
+            role: 'bot',
+            kills: 3,
+            deaths: 8,
+            assists: 5,
+            cs: 232,
+          },
+        ],
+      },
+      red: {
+        captain: PlayerName.JemLem,
+        players: [
+          {
+            name: PlayerName.JemLem,
+            champion: ChampionName.Ornn,
+            role: 'top',
+            kills: 6,
+            deaths: 4,
+            assists: 10,
+            cs: 177,
+          },
+          {
+            name: PlayerName.ElVaux,
+            champion: ChampionName.Wukong,
+            role: 'jungle',
+            kills: 7,
+            deaths: 6,
+            assists: 11,
+            cs: 203,
+          },
+          {
+            name: PlayerName.ThePretender,
+            champion: ChampionName.Lux,
+            role: 'mid',
+            kills: 5,
+            deaths: 7,
+            assists: 12,
+            cs: 215,
+          },
+          {
+            name: PlayerName.Sewerslvt,
+            champion: ChampionName.Pantheon,
+            role: 'bot',
+            kills: 10,
+            deaths: 9,
+            assists: 6,
+            cs: 157,
+          },
+        ],
+      },
+    },
+    dragonSoul: 'chemtech',
   },
 ];
