@@ -15,6 +15,8 @@ export type Game = {
 export class Player {
   key: PlayerName;
 
+  // TODO: don't need these anymore since we have the games list
+  // or should i keep the redundant information for efficiency? :thinking:
   numGames: number = 0;
   numWins: number = 0;
   numMvps: number = 0;
