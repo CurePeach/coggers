@@ -95,6 +95,17 @@ export class Match {
         champ.numGames += 1;
       }
     }
+
+    const bannedChampNames: ChampionName[] = [];
+    for (const bans of this.draft.bans.blue.concat(this.draft.bans.red)) {
+      for (const champ of bans) {
+        bannedChampNames.push(champ);
+      }
+    }
+    const bannedChamps: Champion[] = champions.filter((champ) => bannedChampNames.includes(champ.key));
+    for (const champ of bannedChamps) {
+      champ.numBans += 1;
+    }
   }
 
   private getWinningTeam(): TeamDto {
