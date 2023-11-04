@@ -6,6 +6,8 @@ import { playerIds } from './matches/players';
 import { matchesS1 } from './matches/s1';
 import { Match } from './Match';
 import { PlayerPair } from './PlayerPair';
+import { championIds } from './matches/champions';
+import { Champion } from './Champion';
 
 function App() {
   const players: Player[] = [];
@@ -19,9 +21,15 @@ function App() {
     }
   });
 
+  const champions: Champion[] = [];
+  championIds.forEach((id) => {
+    champions.push(new Champion(id));
+  });
+
   for (const matchDto of matchesS1) {
     const match = new Match(matchDto);
     match.updatePlayerData(players, playerPairs);
+    match.updateChampionData(champions);
   }
 
   for (const player of players) {
@@ -33,6 +41,12 @@ function App() {
   for (const pair of playerPairs) {
     if (pair.numGames > 0) {
       pair.print();
+    }
+  }
+
+  for (const champ of champions) {
+    if (champ.numPicks > 0 || champ.numBans > 0) {
+      champ.print();
     }
   }
 
