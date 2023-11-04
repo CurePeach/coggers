@@ -102,7 +102,9 @@ export class Match {
         bannedChampNames.push(champ);
       }
     }
-    const bannedChamps: Champion[] = champions.filter((champ) => bannedChampNames.includes(champ.key));
+    const bannedChamps: Champion[] = champions.filter((champ) =>
+      bannedChampNames.includes(champ.key)
+    );
     for (const champ of bannedChamps) {
       champ.numBans += 1;
     }
