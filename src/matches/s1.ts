@@ -4,6 +4,7 @@ import { ChampionName, championsStartsWith } from './champions';
 
 export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
   {
+    id: 101,
     date: new Date('2022-11-30'),
     effect: 'Class-ism',
     win: 'red',
@@ -118,6 +119,7 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
     dragonSoul: 'ocean',
   },
   {
+    id: 102,
     date: new Date('2022-12-7'),
     effect: 'Character Bans',
     win: 'red',
@@ -232,6 +234,7 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
     dragonSoul: 'chemtech',
   },
   {
+    id: 103,
     date: new Date('2022-12-7'),
     effect: 'One Region',
     win: 'red',
@@ -377,6 +380,7 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
     events: ['Draghau got a pentakill at Level 1!'],
   },
   {
+    id: 104,
     date: new Date('2022-12-14'),
     effect: 'Only AD',
     win: 'red',
@@ -521,6 +525,7 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
     dragonSoul: 'hextech',
   },
   {
+    id: 105,
     date: new Date('2023-1-4'),
     effect: 'Infinity Gauntlet',
     win: 'red',
@@ -665,6 +670,7 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
     dragonSoul: 'chemtech',
   },
   {
+    id: 106,
     date: new Date('2023-1-11'),
     effect: 'Spelling Bee',
     win: 'blue',
@@ -810,6 +816,7 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
     events: ['First win for blue side!'],
   },
   {
+    id: 107,
     date: new Date('2023-1-18'),
     effect: 'Nemesis Draft',
     win: 'blue',
@@ -954,6 +961,7 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
     dragonSoul: 'chemtech',
   },
   {
+    id: 108,
     date: new Date('2023-1-24'),
     effect: 'Role Reversal',
     win: 'blue',
