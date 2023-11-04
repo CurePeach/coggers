@@ -2,6 +2,7 @@ import { PlayerName } from './players';
 import { ChampionName } from './champions';
 
 export type MatchDto = {
+  id: number;
   date: Date;
   effect: string;
   win: 'blue' | 'red';
