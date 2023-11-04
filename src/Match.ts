@@ -1,5 +1,7 @@
+import { Champion } from './Champion';
 import { Player } from './Player';
 import { PlayerPair } from './PlayerPair';
+import { ChampionName } from './matches/champions';
 import { PlayerName } from './matches/players';
 import { DraftDto, MatchDto, TeamDto } from './matches/types';
 
@@ -78,6 +80,23 @@ export class Match {
     }
   }
 
+  updateChampionData(champions: Champion[]) {
+    const winningChamps: ChampionName[] = this.getChampionNames(this.getWinningTeam());
+    const losingChamps: ChampionName[] = this.getChampionNames(this.getLosingTeam());
+    const allChamps: ChampionName[] = winningChamps.concat(losingChamps);
+
+    const presentChamps: Champion[] = champions.filter((champ) => allChamps.includes(champ.key));
+    for (const champ of presentChamps) {
+      if (winningChamps.includes(champ.key)) {
+        champ.numWins += 1;
+      }
+
+      if (allChamps.includes(champ.key)) {
+        champ.numGames += 1;
+      }
+    }
+  }
+
   private getWinningTeam(): TeamDto {
     if (this.win === 'blue') {
       return this.blueTeam;
@@ -99,6 +118,16 @@ export class Match {
 
     for (const player of team.players) {
       names.push(player.name);
+    }
+
+    return names;
+  }
+
+  private getChampionNames(team: TeamDto): ChampionName[] {
+    const names: ChampionName[] = [];
+
+    for (const player of team.players) {
+      names.push(player.champion);
     }
 
     return names;

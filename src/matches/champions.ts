@@ -170,6 +170,10 @@ export const championNames: string[] = Object.keys(ChampionName).filter((key) =>
   isNaN(Number(key))
 );
 
+export const championIds: ChampionName[] = Object.values(ChampionName).filter(
+  (key) => !isNaN(Number(key))
+) as ChampionName[];
+
 export const convert = (key: ChampionName) => {
   switch (key) {
     case ChampionName.AurelionSol:
