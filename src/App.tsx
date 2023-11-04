@@ -45,7 +45,7 @@ function App() {
   }
 
   for (const champ of champions) {
-    if (champ.numGames > 0 || champ.numBans > 0) {
+    if (champ.numPicks > 0 || champ.numBans > 0) {
       champ.print();
     }
   }

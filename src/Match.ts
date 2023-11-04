@@ -92,7 +92,7 @@ export class Match {
       }
 
       if (allChamps.includes(champ.key)) {
-        champ.numGames += 1;
+        champ.numPicks += 1;
       }
     }
 
