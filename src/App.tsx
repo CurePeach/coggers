@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Player } from './Player';
+import { Player } from './player/Player';
 import { playerIds } from './data/players';
 import { matchesS1 } from './data/s1';
 import { Match } from './match/Match';

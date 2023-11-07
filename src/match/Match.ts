@@ -1,5 +1,5 @@
 import { Champion } from '../champion/Champion';
-import { Player } from '../Player';
+import { Player } from '../player/Player';
 import { PlayerPair } from '../PlayerPair';
 import { ChampionName } from '../data/champions';
 import { PlayerName } from '../data/players';
