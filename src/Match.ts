@@ -1,4 +1,4 @@
-import { Champion } from './Champion';
+import { Champion } from './champion/Champion';
 import { Player } from './Player';
 import { PlayerPair } from './PlayerPair';
 import { ChampionName } from './data/champions';

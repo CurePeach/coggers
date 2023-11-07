@@ -1,4 +1,4 @@
-import { ChampionName, convert } from './data/champions';
+import { ChampionName, convert } from '../data/champions';
 
 export class Champion {
   key: ChampionName;

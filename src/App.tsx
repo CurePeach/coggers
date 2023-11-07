@@ -7,7 +7,7 @@ import { matchesS1 } from './data/s1';
 import { Match } from './Match';
 import { PlayerPair } from './PlayerPair';
 import { championIds } from './data/champions';
-import { Champion } from './Champion';
+import { Champion } from './champion/Champion';
 
 function App() {
   const players: Player[] = [];
