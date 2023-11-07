@@ -1,4 +1,4 @@
-import { PlayerName, convert } from './matches/players';
+import { PlayerName, convert } from '../data/players';
 
 export class PlayerPair {
   keys: [PlayerName, PlayerName];

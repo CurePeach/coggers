@@ -1,9 +1,9 @@
-import { Champion } from './Champion';
-import { Player } from './Player';
-import { PlayerPair } from './PlayerPair';
-import { ChampionName } from './matches/champions';
-import { PlayerName } from './matches/players';
-import { DraftDto, MatchDto, TeamDto } from './matches/types';
+import { Champion } from '../champion/Champion';
+import { Player } from '../player/Player';
+import { PlayerPair } from '../player_pair/PlayerPair';
+import { ChampionName } from '../data/champions';
+import { PlayerName } from '../data/players';
+import { DraftDto, MatchDto, TeamDto } from '../data/types';
 
 export class Match {
   date: Date;
