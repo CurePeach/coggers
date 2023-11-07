@@ -1,6 +1,6 @@
 import { Champion } from '../champion/Champion';
 import { Player } from '../player/Player';
-import { PlayerPair } from '../PlayerPair';
+import { PlayerPair } from '../player_pair/PlayerPair';
 import { ChampionName } from '../data/champions';
 import { PlayerName } from '../data/players';
 import { DraftDto, MatchDto, TeamDto } from '../data/types';

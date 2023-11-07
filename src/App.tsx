@@ -5,7 +5,7 @@ import { Player } from './player/Player';
 import { playerIds } from './data/players';
 import { matchesS1 } from './data/s1';
 import { Match } from './match/Match';
-import { PlayerPair } from './PlayerPair';
+import { PlayerPair } from './player_pair/PlayerPair';
 import { championIds } from './data/champions';
 import { Champion } from './champion/Champion';
 
