@@ -2,11 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Player } from './Player';
-import { playerIds } from './matches/players';
-import { matchesS1 } from './matches/s1';
+import { playerIds } from './data/players';
+import { matchesS1 } from './data/s1';
 import { Match } from './Match';
 import { PlayerPair } from './PlayerPair';
-import { championIds } from './matches/champions';
+import { championIds } from './data/champions';
 import { Champion } from './Champion';
 
 function App() {
