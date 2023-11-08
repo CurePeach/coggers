@@ -6,7 +6,7 @@ import { ChampionStore } from 'champion/champion_store';
 import { Player } from 'player/player_store';
 import { PlayerPair } from 'player_pair/player_pair_store';
 
-export class Match {
+export class MatchStore {
   date: Date;
   effect: string;
   win: 'blue' | 'red';
