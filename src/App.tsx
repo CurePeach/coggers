@@ -4,10 +4,10 @@ import { championIds } from 'data/champions';
 import { playerIds } from 'data/players';
 import { matchesS1 } from 'data/s1';
 
-import { Champion } from 'champion/Champion';
-import { Match } from 'match/Match';
-import { Player } from 'player/Player';
-import { PlayerPair } from 'player_pair/PlayerPair';
+import { Champion } from 'champion/champion_store';
+import { Match } from 'match/match_store';
+import { Player } from 'player/player_store';
+import { PlayerPair } from 'player_pair/player_pair_store';
 
 import './App.css';
 import logo from './logo.svg';
