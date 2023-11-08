@@ -35,12 +35,17 @@ export class PlayerStore {
   @mobx.observable.ref
   gamesList: Game[] = [];
 
+  @mobx.computed
+  get playerName() {
+    return playerConvert(this.key);
+  }
+
   constructor(name: PlayerName) {
     this.key = name;
   }
 
   print() {
-    console.log(`Name: ${playerConvert(this.key)}`);
+    console.log(`Name: ${this.playerName}`);
     console.log(`Winrate: ${this.numWins / this.numGames} (${this.numWins} / ${this.numGames})`);
 
     for (const game of this.gamesList) {

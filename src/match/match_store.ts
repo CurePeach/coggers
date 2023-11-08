@@ -33,6 +33,24 @@ export class MatchStore {
   @mobx.observable.ref
   redTeam: TeamDto;
 
+  @mobx.computed
+  get winningTeam() {
+    if (this.win === 'blue') {
+      return this.blueTeam;
+    }
+
+    return this.redTeam;
+  }
+
+  @mobx.computed
+  get losingTeam() {
+    if (this.win === 'blue') {
+      return this.redTeam;
+    }
+
+    return this.blueTeam;
+  }
+
   constructor(match: MatchDto) {
     mobx.makeObservable(this);
 
@@ -48,8 +66,8 @@ export class MatchStore {
   }
 
   updatePlayerData(players: PlayerStore[], playerPairs: PlayerPairStore[]) {
-    const winningPlayers: PlayerName[] = this.getPlayerNames(this.getWinningTeam());
-    const losingPlayers: PlayerName[] = this.getPlayerNames(this.getLosingTeam());
+    const winningPlayers: PlayerName[] = this.getPlayerNames(this.winningTeam);
+    const losingPlayers: PlayerName[] = this.getPlayerNames(this.losingTeam);
     const allPlayers: PlayerName[] = winningPlayers.concat(losingPlayers);
 
     const presentPlayers: PlayerStore[] = players.filter((player) =>
@@ -102,8 +120,8 @@ export class MatchStore {
   }
 
   updateChampionData(champions: ChampionStore[]) {
-    const winningChamps: ChampionName[] = this.getChampionNames(this.getWinningTeam());
-    const losingChamps: ChampionName[] = this.getChampionNames(this.getLosingTeam());
+    const winningChamps: ChampionName[] = this.getChampionNames(this.winningTeam);
+    const losingChamps: ChampionName[] = this.getChampionNames(this.losingTeam);
     const allChamps: ChampionName[] = winningChamps.concat(losingChamps);
 
     const presentChamps: ChampionStore[] = champions.filter((champ) =>
@@ -131,22 +149,6 @@ export class MatchStore {
     for (const champ of bannedChamps) {
       champ.numBans += 1;
     }
-  }
-
-  private getWinningTeam(): TeamDto {
-    if (this.win === 'blue') {
-      return this.blueTeam;
-    }
-
-    return this.redTeam;
-  }
-
-  private getLosingTeam(): TeamDto {
-    if (this.win === 'blue') {
-      return this.redTeam;
-    }
-
-    return this.blueTeam;
   }
 
   private getPlayerNames(team: TeamDto): PlayerName[] {

@@ -15,13 +15,18 @@ export class ChampionStore {
   @mobx.observable.ref
   numWins: number = 0;
 
+  @mobx.computed
+  get championName() {
+    return convert(this.key);
+  }
+
   constructor(name: ChampionName) {
     mobx.makeObservable(this);
     this.key = name;
   }
 
   print() {
-    console.log(`Name: ${convert(this.key)}`);
+    console.log(`Name: ${this.championName}`);
     if (this.numPicks > 0) {
       console.log(`Winrate: ${this.numWins / this.numPicks} (${this.numWins} / ${this.numPicks})`);
     }
