@@ -2,7 +2,7 @@ import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
 import { DraftDto, MatchDto, TeamDto } from 'data/types';
 
-import { Champion } from 'champion/champion_store';
+import { ChampionStore } from 'champion/champion_store';
 import { Player } from 'player/player_store';
 import { PlayerPair } from 'player_pair/player_pair_store';
 
@@ -81,12 +81,14 @@ export class Match {
     }
   }
 
-  updateChampionData(champions: Champion[]) {
+  updateChampionData(champions: ChampionStore[]) {
     const winningChamps: ChampionName[] = this.getChampionNames(this.getWinningTeam());
     const losingChamps: ChampionName[] = this.getChampionNames(this.getLosingTeam());
     const allChamps: ChampionName[] = winningChamps.concat(losingChamps);
 
-    const presentChamps: Champion[] = champions.filter((champ) => allChamps.includes(champ.key));
+    const presentChamps: ChampionStore[] = champions.filter((champ) =>
+      allChamps.includes(champ.key)
+    );
     for (const champ of presentChamps) {
       if (winningChamps.includes(champ.key)) {
         champ.numWins += 1;
@@ -103,7 +105,7 @@ export class Match {
         bannedChampNames.push(champ);
       }
     }
-    const bannedChamps: Champion[] = champions.filter((champ) =>
+    const bannedChamps: ChampionStore[] = champions.filter((champ) =>
       bannedChampNames.includes(champ.key)
     );
     for (const champ of bannedChamps) {

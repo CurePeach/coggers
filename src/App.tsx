@@ -4,7 +4,7 @@ import { championIds } from 'data/champions';
 import { playerIds } from 'data/players';
 import { matchesS1 } from 'data/s1';
 
-import { Champion } from 'champion/champion_store';
+import { ChampionStore } from 'champion/champion_store';
 import { Match } from 'match/match_store';
 import { Player } from 'player/player_store';
 import { PlayerPair } from 'player_pair/player_pair_store';
@@ -24,9 +24,9 @@ function App() {
     }
   });
 
-  const champions: Champion[] = [];
+  const champions: ChampionStore[] = [];
   championIds.forEach((id) => {
-    champions.push(new Champion(id));
+    champions.push(new ChampionStore(id));
   });
 
   for (const matchDto of matchesS1) {

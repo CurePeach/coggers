@@ -1,6 +1,6 @@
 import { ChampionName, convert } from '../data/champions';
 
-export class Champion {
+export class ChampionStore {
   key: ChampionName;
 
   numBans: number = 0;
