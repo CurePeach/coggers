@@ -1,13 +1,22 @@
+import * as mobx from 'mobx';
+
 import { ChampionName, convert } from '../data/champions';
 
 export class ChampionStore {
+  @mobx.observable.ref
   key: ChampionName;
 
+  @mobx.observable.ref
   numBans: number = 0;
+
+  @mobx.observable.ref
   numPicks: number = 0;
+
+  @mobx.observable.ref
   numWins: number = 0;
 
   constructor(name: ChampionName) {
+    mobx.makeObservable(this);
     this.key = name;
   }
 
