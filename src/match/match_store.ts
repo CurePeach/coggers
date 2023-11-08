@@ -1,3 +1,5 @@
+import * as mobx from 'mobx';
+
 import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
 import { DraftDto, MatchDto, TeamDto } from 'data/types';
@@ -7,17 +9,33 @@ import { PlayerStore } from 'player/player_store';
 import { PlayerPairStore } from 'player_pair/player_pair_store';
 
 export class MatchStore {
+  @mobx.observable.ref
   date: Date;
+
+  @mobx.observable.ref
   effect: string;
+
+  @mobx.observable.ref
   win: 'blue' | 'red';
+
+  @mobx.observable.ref
   mvp: PlayerName;
+
+  @mobx.observable.ref
   ace: PlayerName;
 
+  @mobx.observable.ref
   draft: DraftDto;
+
+  @mobx.observable.ref
   blueTeam: TeamDto;
+
+  @mobx.observable.ref
   redTeam: TeamDto;
 
   constructor(match: MatchDto) {
+    mobx.makeObservable(this);
+
     this.date = match.date;
     this.effect = match.effect;
     this.win = match.win;
