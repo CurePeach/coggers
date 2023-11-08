@@ -3,7 +3,7 @@ import { PlayerName } from 'data/players';
 import { DraftDto, MatchDto, TeamDto } from 'data/types';
 
 import { ChampionStore } from 'champion/champion_store';
-import { Player } from 'player/player_store';
+import { PlayerStore } from 'player/player_store';
 import { PlayerPair } from 'player_pair/player_pair_store';
 
 export class MatchStore {
@@ -29,12 +29,14 @@ export class MatchStore {
     this.redTeam = match.teams.red;
   }
 
-  updatePlayerData(players: Player[], playerPairs: PlayerPair[]) {
+  updatePlayerData(players: PlayerStore[], playerPairs: PlayerPair[]) {
     const winningPlayers: PlayerName[] = this.getPlayerNames(this.getWinningTeam());
     const losingPlayers: PlayerName[] = this.getPlayerNames(this.getLosingTeam());
     const allPlayers: PlayerName[] = winningPlayers.concat(losingPlayers);
 
-    const presentPlayers: Player[] = players.filter((player) => allPlayers.includes(player.key));
+    const presentPlayers: PlayerStore[] = players.filter((player) =>
+      allPlayers.includes(player.key)
+    );
     for (const player of presentPlayers) {
       if (player.key === this.mvp) {
         player.numMvps += 1;

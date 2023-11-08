@@ -6,17 +6,17 @@ import { matchesS1 } from 'data/s1';
 
 import { ChampionStore } from 'champion/champion_store';
 import { MatchStore } from 'match/match_store';
-import { Player } from 'player/player_store';
+import { PlayerStore } from 'player/player_store';
 import { PlayerPair } from 'player_pair/player_pair_store';
 
 import './App.css';
 import logo from './logo.svg';
 
 function App() {
-  const players: Player[] = [];
+  const players: PlayerStore[] = [];
   const playerPairs: PlayerPair[] = [];
   playerIds.forEach((id, index) => {
-    players.push(new Player(id));
+    players.push(new PlayerStore(id));
 
     const otherIds = playerIds.slice(index + 1);
     for (const id2 of otherIds) {

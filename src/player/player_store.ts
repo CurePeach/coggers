@@ -12,7 +12,7 @@ export type Game = {
   cs: number;
 };
 
-export class Player {
+export class PlayerStore {
   key: PlayerName;
 
   // TODO: don't need these anymore since we have the games list
