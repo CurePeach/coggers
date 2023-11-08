@@ -1,5 +1,5 @@
-import { PlayerName } from './players';
-import { ChampionName } from './champions';
+import { ChampionName } from 'data/champions';
+import { PlayerName } from 'data/players';
 
 export type MatchDto = {
   id: number;

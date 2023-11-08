@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import { championIds } from 'data/champions';
+import { playerIds } from 'data/players';
+import { matchesS1 } from 'data/s1';
+
+import { Champion } from 'champion/Champion';
+import { Match } from 'match/Match';
+import { Player } from 'player/Player';
+import { PlayerPair } from 'player_pair/PlayerPair';
+
 import './App.css';
-import { Player } from './player/Player';
-import { playerIds } from './data/players';
-import { matchesS1 } from './data/s1';
-import { Match } from './match/Match';
-import { PlayerPair } from './player_pair/PlayerPair';
-import { championIds } from './data/champions';
-import { Champion } from './champion/Champion';
+import logo from './logo.svg';
 
 function App() {
   const players: Player[] = [];
