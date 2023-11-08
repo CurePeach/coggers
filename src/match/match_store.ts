@@ -4,7 +4,7 @@ import { DraftDto, MatchDto, TeamDto } from 'data/types';
 
 import { ChampionStore } from 'champion/champion_store';
 import { PlayerStore } from 'player/player_store';
-import { PlayerPair } from 'player_pair/player_pair_store';
+import { PlayerPairStore } from 'player_pair/player_pair_store';
 
 export class MatchStore {
   date: Date;
@@ -29,7 +29,7 @@ export class MatchStore {
     this.redTeam = match.teams.red;
   }
 
-  updatePlayerData(players: PlayerStore[], playerPairs: PlayerPair[]) {
+  updatePlayerData(players: PlayerStore[], playerPairs: PlayerPairStore[]) {
     const winningPlayers: PlayerName[] = this.getPlayerNames(this.getWinningTeam());
     const losingPlayers: PlayerName[] = this.getPlayerNames(this.getLosingTeam());
     const allPlayers: PlayerName[] = winningPlayers.concat(losingPlayers);
@@ -67,7 +67,7 @@ export class MatchStore {
       });
     }
 
-    const winningPairs: PlayerPair[] = playerPairs.filter(
+    const winningPairs: PlayerPairStore[] = playerPairs.filter(
       (pair) => winningPlayers.includes(pair.keys[0]) && winningPlayers.includes(pair.keys[1])
     );
     for (const pair of winningPairs) {
@@ -75,7 +75,7 @@ export class MatchStore {
       pair.numWins += 1;
     }
 
-    const losingPairs: PlayerPair[] = playerPairs.filter(
+    const losingPairs: PlayerPairStore[] = playerPairs.filter(
       (pair) => losingPlayers.includes(pair.keys[0]) && losingPlayers.includes(pair.keys[1])
     );
     for (const pair of losingPairs) {

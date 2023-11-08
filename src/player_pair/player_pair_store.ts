@@ -1,6 +1,6 @@
 import { PlayerName, convert } from 'data/players';
 
-export class PlayerPair {
+export class PlayerPairStore {
   keys: [PlayerName, PlayerName];
 
   numGames: number = 0;
