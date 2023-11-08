@@ -1,6 +1,6 @@
-import { ChampionName } from '../data/champions';
-import { PlayerName, convert as playerConvert } from '../data/players';
-import { convert as championConvert } from '../data/champions';
+import { ChampionName } from 'data/champions';
+import { convert as championConvert } from 'data/champions';
+import { PlayerName, convert as playerConvert } from 'data/players';
 
 export type Game = {
   date: Date;
