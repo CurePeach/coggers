@@ -5,7 +5,13 @@ const config = {
   semi: true,
   singleQuote: true,
   printWidth: 100,
-  importOrder: ['^components/(.*)$', '^[./]'],
+  importOrder: [
+    '<THIRD_PARTY_MODULES>',
+    '^data/(.*)$',
+    '^(champion|match|player|player_pair)/(.*)$',
+    '^[./]',
+    '.css$',
+  ],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
 };
