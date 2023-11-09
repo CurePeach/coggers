@@ -10,6 +10,7 @@ import { updateChampionData, updatePlayerData, updatePlayerPairData } from 'util
 
 import { ChampionStore } from 'champion/champion_store';
 import { MatchPresenter } from 'match/match_presenter';
+import { MatchStore } from 'match/match_store';
 import { PlayerStore } from 'player/player_store';
 import { PlayerPairStore } from 'player_pair/player_pair_store';
 
@@ -40,8 +41,11 @@ championIds.forEach((id) => {
 });
 
 const matchPresenter = new MatchPresenter();
+const seasonOne: MatchStore[] = [];
 for (const matchDto of matchesS1) {
   const match = matchPresenter.createMatchStore(matchDto);
+  seasonOne.push(match);
+
   updatePlayerData(match, players);
   updatePlayerPairData(match, playerPairs);
   updateChampionData(match, champions);
