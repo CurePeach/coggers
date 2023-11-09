@@ -14,7 +14,7 @@ import { PlayerPairStore } from 'player_pair/player_pair_store';
 import './App.css';
 import logo from './logo.svg';
 
-function App() {
+const App = () => {
   const players: PlayerStore[] = [];
 
   const playerPairs: PlayerPairStore[] = [];
