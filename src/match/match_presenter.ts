@@ -2,7 +2,7 @@ import { ScoreStore } from 'score/score_store';
 
 import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
-import { MatchDto, TeamDto } from 'data/types';
+import { MatchDto, Side, TeamDto } from 'data/types';
 
 import { ChampionStore } from 'champion/champion_store';
 import { PlayerStore } from 'player/player_store';
@@ -12,8 +12,8 @@ import { MatchStore } from './match_store';
 
 export class MatchPresenter {
   createMatchStore(match: MatchDto) {
-    const blueTeam = this.teamToScores(match.id, match.teams.blue);
-    const redTeam = this.teamToScores(match.id, match.teams.red);
+    const blueTeam = this.teamToScores(match.id, 'blue', match.teams.blue);
+    const redTeam = this.teamToScores(match.id, 'red', match.teams.red);
 
     return new MatchStore(
       match.id,
@@ -56,7 +56,7 @@ export class MatchPresenter {
       if (player) {
         player?.scores.push(data);
       } else {
-        console.error(`Error: cannot find player named ${data.player}`)
+        console.error(`Error: cannot find player named ${data.player}`);
       }
     }
 
@@ -104,13 +104,14 @@ export class MatchPresenter {
     }
   }
 
-  private teamToScores(id: number, team: TeamDto) {
+  private teamToScores(id: number, side: Side, team: TeamDto) {
     const scores: ScoreStore[] = [];
     for (const player of team.players) {
       const score = new ScoreStore(
         id,
         player.name,
         player.champion,
+        side,
         player.role,
         player.kills,
         player.deaths,

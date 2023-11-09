@@ -1,8 +1,8 @@
 import * as mobx from 'mobx';
+import { ScoreStore } from 'score/score_store';
 
 import { convert as championConvert } from 'data/champions';
 import { PlayerName, convert as playerConvert } from 'data/players';
-import { ScoreStore } from 'score/score_store';
 
 export class PlayerStore {
   @mobx.observable.ref

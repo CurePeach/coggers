@@ -1,12 +1,13 @@
 import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
-import { Role } from 'data/types';
+import { Role, Side } from 'data/types';
 
 export class ScoreStore {
   readonly matchId: number;
   readonly player: PlayerName;
   readonly champion: ChampionName;
 
+  readonly side: Side;
   readonly role: Role;
 
   readonly kills: number;
@@ -27,6 +28,7 @@ export class ScoreStore {
     matchId: number,
     player: PlayerName,
     champion: ChampionName,
+    side: Side,
     role: Role,
     kills: number,
     deaths: number,
@@ -37,6 +39,7 @@ export class ScoreStore {
     this.player = player;
     this.champion = champion;
 
+    this.side = side;
     this.role = role;
 
     this.kills = kills;
