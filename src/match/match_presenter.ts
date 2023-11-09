@@ -55,21 +55,24 @@ export class MatchPresenter {
 
   updatePlayerPairData(match: MatchStore, playerPairs: PlayerPairStore[]) {
     const winningPlayers = this.getPlayerNames(match.winningTeam);
-    const losingPlayers = this.getPlayerNames(match.losingTeam);
-
     const winningPairs = playerPairs.filter(
       (pair) => winningPlayers.includes(pair.keys[0]) && winningPlayers.includes(pair.keys[1])
     );
-    for (const pair of winningPairs) {
-      pair.numGames += 1;
-      pair.numWins += 1;
-    }
-
+    const losingPlayers = this.getPlayerNames(match.losingTeam);
     const losingPairs = playerPairs.filter(
       (pair) => losingPlayers.includes(pair.keys[0]) && losingPlayers.includes(pair.keys[1])
     );
-    for (const pair of losingPairs) {
-      pair.numGames += 1;
+    const allPairs = winningPairs.concat(losingPairs);
+
+    const gameData = match.blueTeam.concat(match.redTeam);
+    for (const pair of allPairs) {
+      const playerOne = gameData.find((data) => data.player === pair.keys[0]);
+      const playerTwo = gameData.find((data) => data.player === pair.keys[1]);
+      if (playerOne && playerTwo) {
+        pair.scoresTogether.push([playerOne, playerTwo]);
+      } else {
+        console.error(`Error: cannot find data for player ${pair.keys[0]} or ${pair.keys[1]}`);
+      }
     }
   }
 

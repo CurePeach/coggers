@@ -1,4 +1,5 @@
 import * as mobx from 'mobx';
+import { ScoreStore } from 'score/score_store';
 
 import { PlayerName, convert } from 'data/players';
 
@@ -7,10 +8,7 @@ export class PlayerPairStore {
   keys: [PlayerName, PlayerName];
 
   @mobx.observable.ref
-  numGames: number = 0;
-
-  @mobx.observable.ref
-  numWins: number = 0;
+  scoresTogether: [ScoreStore, ScoreStore][] = [];
 
   @mobx.computed
   get firstPlayer() {
@@ -20,6 +18,22 @@ export class PlayerPairStore {
   @mobx.computed
   get secondPlayer() {
     return convert(this.keys[1]);
+  }
+
+  @mobx.computed
+  get numGames() {
+    return this.scoresTogether.length;
+  }
+
+  @mobx.computed
+  get numWins() {
+    let wins = 0;
+    this.scoresTogether.forEach(([firstScore, _secondScore]) => {
+      if (firstScore.win) {
+        wins += 1;
+      }
+    });
+    return wins;
   }
 
   constructor(p1: PlayerName, p2: PlayerName) {
