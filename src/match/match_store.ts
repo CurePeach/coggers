@@ -1,7 +1,7 @@
 import * as mobx from 'mobx';
 
 import { PlayerName } from 'data/players';
-import { DraftDto, MatchDto, TeamDto } from 'data/types';
+import { DraftDto, TeamDto } from 'data/types';
 
 export class MatchStore {
   @mobx.observable.ref
@@ -46,17 +46,27 @@ export class MatchStore {
     return this.blueTeam;
   }
 
-  constructor(match: MatchDto) {
+  constructor(
+    date: Date,
+    effect: string,
+    win: 'blue' | 'red',
+    mvp: PlayerName,
+    ace: PlayerName,
+    draft: DraftDto,
+    blueTeam: TeamDto,
+    redTeam: TeamDto
+  ) {
     mobx.makeObservable(this);
 
-    this.date = match.date;
-    this.effect = match.effect;
-    this.win = match.win;
-    this.mvp = match.mvp;
-    this.ace = match.ace;
+    this.date = date;
+    this.effect = effect;
 
-    this.draft = match.draft;
-    this.blueTeam = match.teams.blue;
-    this.redTeam = match.teams.red;
+    this.win = win;
+    this.mvp = mvp;
+    this.ace = ace;
+
+    this.draft = draft;
+    this.blueTeam = blueTeam;
+    this.redTeam = redTeam;
   }
 }

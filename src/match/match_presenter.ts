@@ -9,8 +9,17 @@ import { PlayerPairStore } from 'player_pair/player_pair_store';
 import { MatchStore } from './match_store';
 
 export class MatchPresenter {
-  createMatchStore(matchDto: MatchDto) {
-    return new MatchStore(matchDto);
+  createMatchStore(match: MatchDto) {
+    return new MatchStore(
+      match.date,
+      match.effect,
+      match.win,
+      match.mvp,
+      match.ace,
+      match.draft,
+      match.teams.blue,
+      match.teams.red
+    );
   }
 
   updatePlayerData(match: MatchStore, players: PlayerStore[], playerPairs: PlayerPairStore[]) {
