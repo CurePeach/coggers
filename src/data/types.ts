@@ -37,9 +37,11 @@ export type TeamDto = {
 export type PlayerDto = {
   name: PlayerName;
   champion: ChampionName;
-  role: 'top' | 'jungle' | 'mid' | 'bot' | 'support' | 'aram';
+  role: Role;
   kills: number;
   deaths: number;
   assists: number;
   cs: number;
 };
+
+export type Role = 'top' | 'jungle' | 'mid' | 'bot' | 'support' | 'aram';

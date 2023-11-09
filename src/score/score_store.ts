@@ -2,11 +2,14 @@ import * as mobx from 'mobx';
 
 import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
+import { Role } from 'data/types';
 
 export class ScoreStore {
   readonly matchId: number;
   readonly player: PlayerName;
   readonly champion: ChampionName;
+
+  readonly role: Role;
 
   readonly kills: number;
   readonly deaths: number;
@@ -26,6 +29,7 @@ export class ScoreStore {
     matchId: number,
     player: PlayerName,
     champion: ChampionName,
+    role: Role,
     kills: number,
     deaths: number,
     assists: number,
@@ -34,6 +38,8 @@ export class ScoreStore {
     this.matchId = matchId;
     this.player = player;
     this.champion = champion;
+
+    this.role = role;
 
     this.kills = kills;
     this.deaths = deaths;

@@ -3,11 +3,12 @@ import * as mobx from 'mobx';
 import { ChampionName } from 'data/champions';
 import { convert as championConvert } from 'data/champions';
 import { PlayerName, convert as playerConvert } from 'data/players';
+import { Role } from 'data/types';
 
 export type Game = {
   date: Date;
   champion: ChampionName;
-  role: 'top' | 'jungle' | 'mid' | 'bot' | 'support' | 'aram';
+  role: Role;
   kills: number;
   deaths: number;
   assists: number;
