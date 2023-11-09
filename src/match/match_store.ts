@@ -62,46 +62,4 @@ export class MatchStore {
     this.blueTeam = match.teams.blue;
     this.redTeam = match.teams.red;
   }
-
-  updateChampionData(champions: ChampionStore[]) {
-    const winningChamps: ChampionName[] = this.getChampionNames(this.winningTeam);
-    const losingChamps: ChampionName[] = this.getChampionNames(this.losingTeam);
-    const allChamps: ChampionName[] = winningChamps.concat(losingChamps);
-
-    const presentChamps: ChampionStore[] = champions.filter((champ) =>
-      allChamps.includes(champ.key)
-    );
-    for (const champ of presentChamps) {
-      if (winningChamps.includes(champ.key)) {
-        champ.numWins += 1;
-      }
-
-      if (allChamps.includes(champ.key)) {
-        champ.numPicks += 1;
-      }
-    }
-
-    const bannedChampNames: ChampionName[] = [];
-    for (const bans of this.draft.bans.blue.concat(this.draft.bans.red)) {
-      for (const champ of bans) {
-        bannedChampNames.push(champ);
-      }
-    }
-    const bannedChamps: ChampionStore[] = champions.filter((champ) =>
-      bannedChampNames.includes(champ.key)
-    );
-    for (const champ of bannedChamps) {
-      champ.numBans += 1;
-    }
-  }
-
-  private getChampionNames(team: TeamDto): ChampionName[] {
-    const names: ChampionName[] = [];
-
-    for (const player of team.players) {
-      names.push(player.champion);
-    }
-
-    return names;
-  }
 }

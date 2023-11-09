@@ -34,7 +34,7 @@ function App() {
   for (const matchDto of matchesS1) {
     const match = new MatchStore(matchDto);
     matchPresenter.updatePlayerData(match, players, playerPairs);
-    match.updateChampionData(champions);
+    matchPresenter.updateChampionData(match, champions);
   }
 
   for (const player of players) {
