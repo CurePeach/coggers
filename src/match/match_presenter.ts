@@ -29,13 +29,11 @@ export class MatchPresenter {
   }
 
   updatePlayerData(match: MatchStore, players: PlayerStore[], playerPairs: PlayerPairStore[]) {
-    const winningPlayers: PlayerName[] = this.getPlayerNames(match.winningTeam);
-    const losingPlayers: PlayerName[] = this.getPlayerNames(match.losingTeam);
-    const allPlayers: PlayerName[] = winningPlayers.concat(losingPlayers);
+    const winningPlayers = this.getPlayerNames(match.winningTeam);
+    const losingPlayers = this.getPlayerNames(match.losingTeam);
+    const allPlayers = winningPlayers.concat(losingPlayers);
 
-    const presentPlayers: PlayerStore[] = players.filter((player) =>
-      allPlayers.includes(player.key)
-    );
+    const presentPlayers = players.filter((player) => allPlayers.includes(player.key));
     for (const player of presentPlayers) {
       if (player.key === match.mvp) {
         player.numMvps += 1;
@@ -66,7 +64,7 @@ export class MatchPresenter {
       });
     }
 
-    const winningPairs: PlayerPairStore[] = playerPairs.filter(
+    const winningPairs = playerPairs.filter(
       (pair) => winningPlayers.includes(pair.keys[0]) && winningPlayers.includes(pair.keys[1])
     );
     for (const pair of winningPairs) {
@@ -74,7 +72,7 @@ export class MatchPresenter {
       pair.numWins += 1;
     }
 
-    const losingPairs: PlayerPairStore[] = playerPairs.filter(
+    const losingPairs = playerPairs.filter(
       (pair) => losingPlayers.includes(pair.keys[0]) && losingPlayers.includes(pair.keys[1])
     );
     for (const pair of losingPairs) {
@@ -83,13 +81,11 @@ export class MatchPresenter {
   }
 
   updateChampionData(match: MatchStore, champions: ChampionStore[]) {
-    const winningChamps: ChampionName[] = this.getChampionNames(match.winningTeam);
-    const losingChamps: ChampionName[] = this.getChampionNames(match.losingTeam);
-    const allChamps: ChampionName[] = winningChamps.concat(losingChamps);
+    const winningChamps = this.getChampionNames(match.winningTeam);
+    const losingChamps = this.getChampionNames(match.losingTeam);
+    const allChamps = winningChamps.concat(losingChamps);
 
-    const presentChamps: ChampionStore[] = champions.filter((champ) =>
-      allChamps.includes(champ.key)
-    );
+    const presentChamps = champions.filter((champ) => allChamps.includes(champ.key));
     for (const champ of presentChamps) {
       if (winningChamps.includes(champ.key)) {
         champ.numWins += 1;
@@ -106,9 +102,7 @@ export class MatchPresenter {
         bannedChampNames.push(champ);
       }
     }
-    const bannedChamps: ChampionStore[] = champions.filter((champ) =>
-      bannedChampNames.includes(champ.key)
-    );
+    const bannedChamps = champions.filter((champ) => bannedChampNames.includes(champ.key));
     for (const champ of bannedChamps) {
       champ.numBans += 1;
     }
