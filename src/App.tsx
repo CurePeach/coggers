@@ -6,7 +6,6 @@ import { matchesS1 } from 'data/s1';
 
 import { ChampionStore } from 'champion/champion_store';
 import { MatchPresenter } from 'match/match_presenter';
-import { MatchStore } from 'match/match_store';
 import { PlayerStore } from 'player/player_store';
 import { PlayerPairStore } from 'player_pair/player_pair_store';
 
@@ -15,6 +14,7 @@ import logo from './logo.svg';
 
 function App() {
   const players: PlayerStore[] = [];
+
   const playerPairs: PlayerPairStore[] = [];
   playerIds.forEach((id, index) => {
     players.push(new PlayerStore(id));
@@ -32,8 +32,9 @@ function App() {
 
   const matchPresenter = new MatchPresenter();
   for (const matchDto of matchesS1) {
-    const match = new MatchStore(matchDto);
-    matchPresenter.updatePlayerData(match, players, playerPairs);
+    const match = matchPresenter.createMatchStore(matchDto);
+    matchPresenter.updatePlayerData(match, players);
+    matchPresenter.updatePlayerPairData(match, playerPairs);
     matchPresenter.updateChampionData(match, champions);
   }
 

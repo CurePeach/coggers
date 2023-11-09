@@ -1,4 +1,5 @@
 import * as mobx from 'mobx';
+import { ScoreStore } from 'score/score_store';
 
 import { ChampionName, convert } from '../data/champions';
 
@@ -7,17 +8,35 @@ export class ChampionStore {
   key: ChampionName;
 
   @mobx.observable.ref
-  numBans: number = 0;
+  bans: number[] = [];
 
   @mobx.observable.ref
-  numPicks: number = 0;
-
-  @mobx.observable.ref
-  numWins: number = 0;
+  scores: ScoreStore[] = [];
 
   @mobx.computed
   get championName() {
     return convert(this.key);
+  }
+
+  @mobx.computed
+  get numBans() {
+    return this.bans.length;
+  }
+
+  @mobx.computed
+  get numPicks() {
+    return this.scores.length;
+  }
+
+  @mobx.computed
+  get numWins() {
+    let wins = 0;
+    this.scores.forEach((score) => {
+      if (score.win) {
+        wins += 1;
+      }
+    });
+    return wins;
   }
 
   constructor(name: ChampionName) {

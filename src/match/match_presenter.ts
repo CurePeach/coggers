@@ -1,6 +1,8 @@
+import { ScoreStore } from 'score/score_store';
+
 import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
-import { TeamDto } from 'data/types';
+import { MatchDto, Side, TeamDto } from 'data/types';
 
 import { ChampionStore } from 'champion/champion_store';
 import { PlayerStore } from 'player/player_store';
@@ -9,107 +11,135 @@ import { PlayerPairStore } from 'player_pair/player_pair_store';
 import { MatchStore } from './match_store';
 
 export class MatchPresenter {
-  updatePlayerData(match: MatchStore, players: PlayerStore[], playerPairs: PlayerPairStore[]) {
-    const winningPlayers: PlayerName[] = this.getPlayerNames(match.winningTeam);
-    const losingPlayers: PlayerName[] = this.getPlayerNames(match.losingTeam);
-    const allPlayers: PlayerName[] = winningPlayers.concat(losingPlayers);
+  createMatchStore(match: MatchDto) {
+    const blueTeam = this.teamToScores(match.id, 'blue', match.win === 'blue', match.teams.blue);
+    const redTeam = this.teamToScores(match.id, 'red', match.win === 'red', match.teams.red);
 
-    const presentPlayers: PlayerStore[] = players.filter((player) =>
-      allPlayers.includes(player.key)
+    return new MatchStore(
+      match.id,
+      match.date,
+      match.effect,
+      match.win,
+      match.mvp,
+      match.ace,
+      match.draft,
+      blueTeam,
+      redTeam
     );
+  }
+
+  updatePlayerData(match: MatchStore, players: PlayerStore[]) {
+    const winningPlayers = this.getPlayerNames(match.winningTeam);
+    const losingPlayers = this.getPlayerNames(match.losingTeam);
+    const allPlayers = winningPlayers.concat(losingPlayers);
+
+    const presentPlayers = players.filter((player) => allPlayers.includes(player.key));
     for (const player of presentPlayers) {
       if (player.key === match.mvp) {
         player.numMvps += 1;
       } else if (player.key === match.ace) {
         player.numAces += 1;
       }
-
-      if (winningPlayers.includes(player.key)) {
-        player.numWins += 1;
-      }
-
-      if (allPlayers.includes(player.key)) {
-        player.numGames += 1;
-      }
     }
 
-    const gameData = match.blueTeam.players.concat(match.redTeam.players);
+    const gameData = match.blueTeam.concat(match.redTeam);
     for (const data of gameData) {
-      const player = presentPlayers.find((player) => player.key === data.name);
-      player?.gamesList.push({
-        date: match.date,
-        champion: data.champion,
-        role: data.role,
-        kills: data.kills,
-        deaths: data.deaths,
-        assists: data.assists,
-        cs: data.cs,
-      });
+      const player = presentPlayers.find((player) => player.key === data.player);
+      if (player) {
+        player?.scores.push(data);
+      } else {
+        console.error(`Error: cannot find player named ${data.player}`);
+      }
     }
+  }
 
-    const winningPairs: PlayerPairStore[] = playerPairs.filter(
+  updatePlayerPairData(match: MatchStore, playerPairs: PlayerPairStore[]) {
+    const winningPlayers = this.getPlayerNames(match.winningTeam);
+    const winningPairs = playerPairs.filter(
       (pair) => winningPlayers.includes(pair.keys[0]) && winningPlayers.includes(pair.keys[1])
     );
-    for (const pair of winningPairs) {
-      pair.numGames += 1;
-      pair.numWins += 1;
-    }
-
-    const losingPairs: PlayerPairStore[] = playerPairs.filter(
+    const losingPlayers = this.getPlayerNames(match.losingTeam);
+    const losingPairs = playerPairs.filter(
       (pair) => losingPlayers.includes(pair.keys[0]) && losingPlayers.includes(pair.keys[1])
     );
-    for (const pair of losingPairs) {
-      pair.numGames += 1;
+    const allPairs = winningPairs.concat(losingPairs);
+
+    const gameData = match.blueTeam.concat(match.redTeam);
+    for (const pair of allPairs) {
+      const playerOne = gameData.find((data) => data.player === pair.keys[0]);
+      const playerTwo = gameData.find((data) => data.player === pair.keys[1]);
+      if (playerOne && playerTwo) {
+        pair.scoresTogether.push([playerOne, playerTwo]);
+      } else {
+        console.error(`Error: cannot find data for player ${pair.keys[0]} or ${pair.keys[1]}`);
+      }
     }
   }
 
   updateChampionData(match: MatchStore, champions: ChampionStore[]) {
-    const winningChamps: ChampionName[] = this.getChampionNames(match.winningTeam);
-    const losingChamps: ChampionName[] = this.getChampionNames(match.losingTeam);
-    const allChamps: ChampionName[] = winningChamps.concat(losingChamps);
+    const winningChamps = this.getChampionNames(match.winningTeam);
+    const losingChamps = this.getChampionNames(match.losingTeam);
+    const allChamps = winningChamps.concat(losingChamps);
 
-    const presentChamps: ChampionStore[] = champions.filter((champ) =>
-      allChamps.includes(champ.key)
-    );
-    for (const champ of presentChamps) {
-      if (winningChamps.includes(champ.key)) {
-        champ.numWins += 1;
-      }
-
-      if (allChamps.includes(champ.key)) {
-        champ.numPicks += 1;
+    const presentChamps = champions.filter((champ) => allChamps.includes(champ.key));
+    const gameData = match.blueTeam.concat(match.redTeam);
+    for (const data of gameData) {
+      const champ = presentChamps.find((champ) => champ.key === data.champion);
+      if (champ) {
+        champ?.scores.push(data);
+      } else {
+        console.error(`Error: cannot find champion named ${data.champion}`);
       }
     }
 
+    const allBans = match.draft.bans.blue.concat(match.draft.bans.red);
     const bannedChampNames: ChampionName[] = [];
-    for (const bans of match.draft.bans.blue.concat(match.draft.bans.red)) {
+    for (const bans of allBans) {
       for (const champ of bans) {
         bannedChampNames.push(champ);
       }
     }
-    const bannedChamps: ChampionStore[] = champions.filter((champ) =>
-      bannedChampNames.includes(champ.key)
-    );
+    const bannedChamps = champions.filter((champ) => bannedChampNames.includes(champ.key));
     for (const champ of bannedChamps) {
-      champ.numBans += 1;
+      champ.bans.push(match.id);
     }
   }
 
-  private getPlayerNames(team: TeamDto): PlayerName[] {
+  private teamToScores(id: number, side: Side, win: boolean, team: TeamDto) {
+    const scores: ScoreStore[] = [];
+    for (const player of team.players) {
+      const score = new ScoreStore(
+        id,
+        player.name,
+        player.champion,
+        side,
+        player.role,
+        win,
+        player.kills,
+        player.deaths,
+        player.assists,
+        player.cs
+      );
+      scores.push(score);
+    }
+    return scores;
+  }
+
+  private getPlayerNames(team: ScoreStore[]): PlayerName[] {
     const names: PlayerName[] = [];
 
-    for (const player of team.players) {
-      names.push(player.name);
+    for (const score of team) {
+      names.push(score.player);
     }
 
     return names;
   }
 
-  private getChampionNames(team: TeamDto): ChampionName[] {
+  private getChampionNames(team: ScoreStore[]): ChampionName[] {
     const names: ChampionName[] = [];
 
-    for (const player of team.players) {
-      names.push(player.champion);
+    for (const score of team) {
+      names.push(score.champion);
     }
 
     return names;
