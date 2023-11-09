@@ -8,14 +8,6 @@ export class PlayerStore {
   @mobx.observable.ref
   key: PlayerName;
 
-  // TODO: don't need these anymore since we have the games list
-  // or should i keep the redundant information for efficiency? :thinking:
-  @mobx.observable.ref
-  numGames: number = 0;
-
-  @mobx.observable.ref
-  numWins: number = 0;
-
   @mobx.observable.ref
   numMvps: number = 0;
 
@@ -28,6 +20,22 @@ export class PlayerStore {
   @mobx.computed
   get playerName() {
     return playerConvert(this.key);
+  }
+
+  @mobx.computed
+  get numWins() {
+    let wins = 0;
+    this.scores.forEach((score) => {
+      if (score.win) {
+        wins += 1;
+      }
+    });
+    return wins;
+  }
+
+  @mobx.computed
+  get numGames() {
+    return this.scores.length;
   }
 
   constructor(name: PlayerName) {

@@ -40,14 +40,6 @@ export class MatchPresenter {
       } else if (player.key === match.ace) {
         player.numAces += 1;
       }
-
-      if (winningPlayers.includes(player.key)) {
-        player.numWins += 1;
-      }
-
-      if (allPlayers.includes(player.key)) {
-        player.numGames += 1;
-      }
     }
 
     const gameData = match.blueTeam.concat(match.redTeam);
