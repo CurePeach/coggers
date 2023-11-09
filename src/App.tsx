@@ -14,6 +14,7 @@ import logo from './logo.svg';
 
 function App() {
   const players: PlayerStore[] = [];
+
   const playerPairs: PlayerPairStore[] = [];
   playerIds.forEach((id, index) => {
     players.push(new PlayerStore(id));
@@ -32,7 +33,8 @@ function App() {
   const matchPresenter = new MatchPresenter();
   for (const matchDto of matchesS1) {
     const match = matchPresenter.createMatchStore(matchDto);
-    matchPresenter.updatePlayerData(match, players, playerPairs);
+    matchPresenter.updatePlayerData(match, players);
+    matchPresenter.updatePlayerPairData(match, playerPairs);
     matchPresenter.updateChampionData(match, champions);
   }
 

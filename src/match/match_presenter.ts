@@ -28,7 +28,7 @@ export class MatchPresenter {
     );
   }
 
-  updatePlayerData(match: MatchStore, players: PlayerStore[], playerPairs: PlayerPairStore[]) {
+  updatePlayerData(match: MatchStore, players: PlayerStore[]) {
     const winningPlayers = this.getPlayerNames(match.winningTeam);
     const losingPlayers = this.getPlayerNames(match.losingTeam);
     const allPlayers = winningPlayers.concat(losingPlayers);
@@ -51,6 +51,11 @@ export class MatchPresenter {
         console.error(`Error: cannot find player named ${data.player}`);
       }
     }
+  }
+
+  updatePlayerPairData(match: MatchStore, playerPairs: PlayerPairStore[]) {
+    const winningPlayers = this.getPlayerNames(match.winningTeam);
+    const losingPlayers = this.getPlayerNames(match.losingTeam);
 
     const winningPairs = playerPairs.filter(
       (pair) => winningPlayers.includes(pair.keys[0]) && winningPlayers.includes(pair.keys[1])
