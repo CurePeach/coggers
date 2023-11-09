@@ -1,10 +1,7 @@
 import * as mobx from 'mobx';
 
-import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
 import { DraftDto, MatchDto, TeamDto } from 'data/types';
-
-import { ChampionStore } from 'champion/champion_store';
 
 export class MatchStore {
   @mobx.observable.ref
