@@ -4,35 +4,37 @@ import { championIds } from 'data/champions';
 import { playerIds } from 'data/players';
 import { matchesS1 } from 'data/s1';
 
-import { Champion } from 'champion/Champion';
-import { Match } from 'match/Match';
-import { Player } from 'player/Player';
-import { PlayerPair } from 'player_pair/PlayerPair';
+import { ChampionStore } from 'champion/champion_store';
+import { MatchPresenter } from 'match/match_presenter';
+import { MatchStore } from 'match/match_store';
+import { PlayerStore } from 'player/player_store';
+import { PlayerPairStore } from 'player_pair/player_pair_store';
 
 import './App.css';
 import logo from './logo.svg';
 
 function App() {
-  const players: Player[] = [];
-  const playerPairs: PlayerPair[] = [];
+  const players: PlayerStore[] = [];
+  const playerPairs: PlayerPairStore[] = [];
   playerIds.forEach((id, index) => {
-    players.push(new Player(id));
+    players.push(new PlayerStore(id));
 
     const otherIds = playerIds.slice(index + 1);
     for (const id2 of otherIds) {
-      playerPairs.push(new PlayerPair(id, id2));
+      playerPairs.push(new PlayerPairStore(id, id2));
     }
   });
 
-  const champions: Champion[] = [];
+  const champions: ChampionStore[] = [];
   championIds.forEach((id) => {
-    champions.push(new Champion(id));
+    champions.push(new ChampionStore(id));
   });
 
+  const matchPresenter = new MatchPresenter();
   for (const matchDto of matchesS1) {
-    const match = new Match(matchDto);
-    match.updatePlayerData(players, playerPairs);
-    match.updateChampionData(champions);
+    const match = new MatchStore(matchDto);
+    matchPresenter.updatePlayerData(match, players, playerPairs);
+    matchPresenter.updateChampionData(match, champions);
   }
 
   for (const player of players) {

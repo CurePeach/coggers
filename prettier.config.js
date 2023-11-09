@@ -1,4 +1,5 @@
 const config = {
+  importOrderParserPlugins: ['typescript', 'jsx', 'decorators'],
   plugins: ['@trivago/prettier-plugin-sort-imports'],
   trailingComma: 'es5',
   tabWidth: 2,
