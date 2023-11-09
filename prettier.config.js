@@ -9,6 +9,7 @@ const config = {
   importOrder: [
     '<THIRD_PARTY_MODULES>',
     '^data/(.*)$',
+    '^utils/(.*)$',
     '^(champion|match|player|player_pair)/(.*)$',
     '^[./]',
     '.css$',

@@ -4,6 +4,8 @@ import { championIds } from 'data/champions';
 import { playerIds } from 'data/players';
 import { matchesS1 } from 'data/s1';
 
+import { updateChampionData, updatePlayerData, updatePlayerPairData } from 'utils/match_helpers';
+
 import { ChampionStore } from 'champion/champion_store';
 import { MatchPresenter } from 'match/match_presenter';
 import { PlayerStore } from 'player/player_store';
@@ -33,9 +35,9 @@ function App() {
   const matchPresenter = new MatchPresenter();
   for (const matchDto of matchesS1) {
     const match = matchPresenter.createMatchStore(matchDto);
-    matchPresenter.updatePlayerData(match, players);
-    matchPresenter.updatePlayerPairData(match, playerPairs);
-    matchPresenter.updateChampionData(match, champions);
+    updatePlayerData(match, players);
+    updatePlayerPairData(match, playerPairs);
+    updateChampionData(match, champions);
   }
 
   for (const player of players) {
