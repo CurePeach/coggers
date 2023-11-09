@@ -5,8 +5,6 @@ import { PlayerName } from 'data/players';
 import { DraftDto, MatchDto, TeamDto } from 'data/types';
 
 import { ChampionStore } from 'champion/champion_store';
-import { PlayerStore } from 'player/player_store';
-import { PlayerPairStore } from 'player_pair/player_pair_store';
 
 export class MatchStore {
   @mobx.observable.ref
@@ -65,60 +63,6 @@ export class MatchStore {
     this.redTeam = match.teams.red;
   }
 
-  updatePlayerData(players: PlayerStore[], playerPairs: PlayerPairStore[]) {
-    const winningPlayers: PlayerName[] = this.getPlayerNames(this.winningTeam);
-    const losingPlayers: PlayerName[] = this.getPlayerNames(this.losingTeam);
-    const allPlayers: PlayerName[] = winningPlayers.concat(losingPlayers);
-
-    const presentPlayers: PlayerStore[] = players.filter((player) =>
-      allPlayers.includes(player.key)
-    );
-    for (const player of presentPlayers) {
-      if (player.key === this.mvp) {
-        player.numMvps += 1;
-      } else if (player.key === this.ace) {
-        player.numAces += 1;
-      }
-
-      if (winningPlayers.includes(player.key)) {
-        player.numWins += 1;
-      }
-
-      if (allPlayers.includes(player.key)) {
-        player.numGames += 1;
-      }
-    }
-
-    const gameData = this.blueTeam.players.concat(this.redTeam.players);
-    for (const data of gameData) {
-      const player = presentPlayers.find((player) => player.key === data.name);
-      player?.gamesList.push({
-        date: this.date,
-        champion: data.champion,
-        role: data.role,
-        kills: data.kills,
-        deaths: data.deaths,
-        assists: data.assists,
-        cs: data.cs,
-      });
-    }
-
-    const winningPairs: PlayerPairStore[] = playerPairs.filter(
-      (pair) => winningPlayers.includes(pair.keys[0]) && winningPlayers.includes(pair.keys[1])
-    );
-    for (const pair of winningPairs) {
-      pair.numGames += 1;
-      pair.numWins += 1;
-    }
-
-    const losingPairs: PlayerPairStore[] = playerPairs.filter(
-      (pair) => losingPlayers.includes(pair.keys[0]) && losingPlayers.includes(pair.keys[1])
-    );
-    for (const pair of losingPairs) {
-      pair.numGames += 1;
-    }
-  }
-
   updateChampionData(champions: ChampionStore[]) {
     const winningChamps: ChampionName[] = this.getChampionNames(this.winningTeam);
     const losingChamps: ChampionName[] = this.getChampionNames(this.losingTeam);
@@ -149,16 +93,6 @@ export class MatchStore {
     for (const champ of bannedChamps) {
       champ.numBans += 1;
     }
-  }
-
-  private getPlayerNames(team: TeamDto): PlayerName[] {
-    const names: PlayerName[] = [];
-
-    for (const player of team.players) {
-      names.push(player.name);
-    }
-
-    return names;
   }
 
   private getChampionNames(team: TeamDto): ChampionName[] {
