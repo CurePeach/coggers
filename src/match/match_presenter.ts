@@ -1,6 +1,6 @@
 import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
-import { TeamDto } from 'data/types';
+import { MatchDto, TeamDto } from 'data/types';
 
 import { ChampionStore } from 'champion/champion_store';
 import { PlayerStore } from 'player/player_store';
@@ -9,6 +9,10 @@ import { PlayerPairStore } from 'player_pair/player_pair_store';
 import { MatchStore } from './match_store';
 
 export class MatchPresenter {
+  createMatchStore(matchDto: MatchDto) {
+    return new MatchStore(matchDto);
+  }
+
   updatePlayerData(match: MatchStore, players: PlayerStore[], playerPairs: PlayerPairStore[]) {
     const winningPlayers: PlayerName[] = this.getPlayerNames(match.winningTeam);
     const losingPlayers: PlayerName[] = this.getPlayerNames(match.losingTeam);
