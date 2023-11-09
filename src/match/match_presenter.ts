@@ -53,15 +53,11 @@ export class MatchPresenter {
     const gameData = match.blueTeam.concat(match.redTeam);
     for (const data of gameData) {
       const player = presentPlayers.find((player) => player.key === data.player);
-      player?.gamesList.push({
-        date: match.date,
-        champion: data.champion,
-        role: data.role,
-        kills: data.kills,
-        deaths: data.deaths,
-        assists: data.assists,
-        cs: data.cs,
-      });
+      if (player) {
+        player?.scores.push(data);
+      } else {
+        console.error(`Error: cannot find player named ${data.player}`)
+      }
     }
 
     const winningPairs = playerPairs.filter(
