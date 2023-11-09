@@ -74,25 +74,26 @@ export class MatchPresenter {
     const allChamps = winningChamps.concat(losingChamps);
 
     const presentChamps = champions.filter((champ) => allChamps.includes(champ.key));
-    for (const champ of presentChamps) {
-      if (winningChamps.includes(champ.key)) {
-        champ.numWins += 1;
-      }
-
-      if (allChamps.includes(champ.key)) {
-        champ.numPicks += 1;
+    const gameData = match.blueTeam.concat(match.redTeam);
+    for (const data of gameData) {
+      const champ = presentChamps.find((champ) => champ.key === data.champion);
+      if (champ) {
+        champ?.scores.push(data);
+      } else {
+        console.error(`Error: cannot find champion named ${data.champion}`);
       }
     }
 
+    const allBans = match.draft.bans.blue.concat(match.draft.bans.red);
     const bannedChampNames: ChampionName[] = [];
-    for (const bans of match.draft.bans.blue.concat(match.draft.bans.red)) {
+    for (const bans of allBans) {
       for (const champ of bans) {
         bannedChampNames.push(champ);
       }
     }
     const bannedChamps = champions.filter((champ) => bannedChampNames.includes(champ.key));
     for (const champ of bannedChamps) {
-      champ.numBans += 1;
+      champ.bans.push(match.id);
     }
   }
 
