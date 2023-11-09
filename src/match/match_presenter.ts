@@ -1,3 +1,5 @@
+import { ScoreStore } from 'score/score_store';
+
 import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
 import { MatchDto, TeamDto } from 'data/types';
@@ -10,6 +12,9 @@ import { MatchStore } from './match_store';
 
 export class MatchPresenter {
   createMatchStore(match: MatchDto) {
+    const blueTeam = this.teamToScores(match.id, match.teams.blue);
+    const redTeam = this.teamToScores(match.id, match.teams.red);
+
     return new MatchStore(
       match.id,
       match.date,
@@ -18,8 +23,8 @@ export class MatchPresenter {
       match.mvp,
       match.ace,
       match.draft,
-      match.teams.blue,
-      match.teams.red
+      blueTeam,
+      redTeam
     );
   }
 
@@ -47,9 +52,9 @@ export class MatchPresenter {
       }
     }
 
-    const gameData = match.blueTeam.players.concat(match.redTeam.players);
+    const gameData = match.blueTeam.concat(match.redTeam);
     for (const data of gameData) {
-      const player = presentPlayers.find((player) => player.key === data.name);
+      const player = presentPlayers.find((player) => player.key === data.player);
       player?.gamesList.push({
         date: match.date,
         champion: data.champion,
@@ -109,21 +114,39 @@ export class MatchPresenter {
     }
   }
 
-  private getPlayerNames(team: TeamDto): PlayerName[] {
+  private teamToScores(id: number, team: TeamDto) {
+    const scores: ScoreStore[] = [];
+    for (const player of team.players) {
+      const score = new ScoreStore(
+        id,
+        player.name,
+        player.champion,
+        player.role,
+        player.kills,
+        player.deaths,
+        player.assists,
+        player.cs
+      );
+      scores.push(score);
+    }
+    return scores;
+  }
+
+  private getPlayerNames(team: ScoreStore[]): PlayerName[] {
     const names: PlayerName[] = [];
 
-    for (const player of team.players) {
-      names.push(player.name);
+    for (const score of team) {
+      names.push(score.player);
     }
 
     return names;
   }
 
-  private getChampionNames(team: TeamDto): ChampionName[] {
+  private getChampionNames(team: ScoreStore[]): ChampionName[] {
     const names: ChampionName[] = [];
 
-    for (const player of team.players) {
-      names.push(player.champion);
+    for (const score of team) {
+      names.push(score.champion);
     }
 
     return names;

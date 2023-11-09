@@ -1,7 +1,8 @@
 import * as mobx from 'mobx';
+import { ScoreStore } from 'score/score_store';
 
 import { PlayerName } from 'data/players';
-import { DraftDto, Side, TeamDto } from 'data/types';
+import { DraftDto, Side } from 'data/types';
 
 export class MatchStore {
   @mobx.observable.ref
@@ -26,10 +27,10 @@ export class MatchStore {
   draft: DraftDto;
 
   @mobx.observable.ref
-  blueTeam: TeamDto;
+  blueTeam: ScoreStore[];
 
   @mobx.observable.ref
-  redTeam: TeamDto;
+  redTeam: ScoreStore[];
 
   @mobx.computed
   get winningTeam() {
@@ -57,8 +58,8 @@ export class MatchStore {
     mvp: PlayerName,
     ace: PlayerName,
     draft: DraftDto,
-    blueTeam: TeamDto,
-    redTeam: TeamDto
+    blueTeam: ScoreStore[],
+    redTeam: ScoreStore[]
   ) {
     mobx.makeObservable(this);
 
