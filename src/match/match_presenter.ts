@@ -11,6 +11,7 @@ import { MatchStore } from './match_store';
 export class MatchPresenter {
   createMatchStore(match: MatchDto) {
     return new MatchStore(
+      match.id,
       match.date,
       match.effect,
       match.win,

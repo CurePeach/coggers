@@ -5,6 +5,9 @@ import { DraftDto, Side, TeamDto } from 'data/types';
 
 export class MatchStore {
   @mobx.observable.ref
+  id: number;
+
+  @mobx.observable.ref
   date: Date;
 
   @mobx.observable.ref
@@ -47,6 +50,7 @@ export class MatchStore {
   }
 
   constructor(
+    id: number,
     date: Date,
     effect: string,
     win: Side,
@@ -57,6 +61,8 @@ export class MatchStore {
     redTeam: TeamDto
   ) {
     mobx.makeObservable(this);
+
+    this.id = id;
 
     this.date = date;
     this.effect = effect;
