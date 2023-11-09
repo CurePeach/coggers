@@ -5,7 +5,7 @@ export type MatchDto = {
   id: number;
   date: Date;
   effect: string;
-  win: 'blue' | 'red';
+  win: Side;
   mvp: PlayerName;
   ace: PlayerName;
   draft: DraftDto;
@@ -14,7 +14,7 @@ export type MatchDto = {
 
 export type ExtraMatchProperties = {
   duration?: number;
-  dragonSoul?: 'infernal' | 'mountain' | 'ocean' | 'cloud' | 'hextech' | 'chemtech';
+  dragonSoul?: Dragon;
   events?: string[];
 };
 
@@ -43,5 +43,9 @@ export type PlayerDto = {
   assists: number;
   cs: number;
 };
+
+export type Side = 'blue' | 'red';
+
+export type Dragon = 'infernal' | 'mountain' | 'ocean' | 'cloud' | 'hextech' | 'chemtech';
 
 export type Role = 'top' | 'jungle' | 'mid' | 'bot' | 'support' | 'aram';

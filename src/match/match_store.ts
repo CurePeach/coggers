@@ -1,7 +1,7 @@
 import * as mobx from 'mobx';
 
 import { PlayerName } from 'data/players';
-import { DraftDto, TeamDto } from 'data/types';
+import { DraftDto, Side, TeamDto } from 'data/types';
 
 export class MatchStore {
   @mobx.observable.ref
@@ -11,7 +11,7 @@ export class MatchStore {
   effect: string;
 
   @mobx.observable.ref
-  win: 'blue' | 'red';
+  win: Side;
 
   @mobx.observable.ref
   mvp: PlayerName;
@@ -49,7 +49,7 @@ export class MatchStore {
   constructor(
     date: Date,
     effect: string,
-    win: 'blue' | 'red',
+    win: Side,
     mvp: PlayerName,
     ace: PlayerName,
     draft: DraftDto,
