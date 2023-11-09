@@ -1,5 +1,3 @@
-import * as mobx from 'mobx';
-
 import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
 import { Role } from 'data/types';
