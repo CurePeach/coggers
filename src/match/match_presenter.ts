@@ -12,8 +12,8 @@ import { MatchStore } from './match_store';
 
 export class MatchPresenter {
   createMatchStore(match: MatchDto) {
-    const blueTeam = this.teamToScores(match.id, 'blue', match.teams.blue);
-    const redTeam = this.teamToScores(match.id, 'red', match.teams.red);
+    const blueTeam = this.teamToScores(match.id, 'blue', match.win === 'blue', match.teams.blue);
+    const redTeam = this.teamToScores(match.id, 'red', match.win === 'red', match.teams.red);
 
     return new MatchStore(
       match.id,
@@ -104,7 +104,7 @@ export class MatchPresenter {
     }
   }
 
-  private teamToScores(id: number, side: Side, team: TeamDto) {
+  private teamToScores(id: number, side: Side, win: boolean, team: TeamDto) {
     const scores: ScoreStore[] = [];
     for (const player of team.players) {
       const score = new ScoreStore(
@@ -113,6 +113,7 @@ export class MatchPresenter {
         player.champion,
         side,
         player.role,
+        win,
         player.kills,
         player.deaths,
         player.assists,

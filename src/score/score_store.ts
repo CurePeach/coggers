@@ -9,6 +9,7 @@ export class ScoreStore {
 
   readonly side: Side;
   readonly role: Role;
+  readonly win: boolean;
 
   readonly kills: number;
   readonly deaths: number;
@@ -30,6 +31,7 @@ export class ScoreStore {
     champion: ChampionName,
     side: Side,
     role: Role,
+    win: boolean,
     kills: number,
     deaths: number,
     assists: number,
@@ -41,6 +43,7 @@ export class ScoreStore {
 
     this.side = side;
     this.role = role;
+    this.win = win;
 
     this.kills = kills;
     this.deaths = deaths;
