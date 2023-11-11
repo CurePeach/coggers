@@ -1,6 +1,7 @@
 import App from 'App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { championIds } from 'data/champions';
 import { playerIds } from 'data/players';
@@ -16,10 +17,18 @@ import { PlayerPairStore } from 'player_pair/player_pair_store';
 
 import './index.css';
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
