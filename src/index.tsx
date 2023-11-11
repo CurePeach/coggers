@@ -2,6 +2,7 @@ import App from 'App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { ErrorPage } from 'routes/error_page';
 
 import { championIds } from 'data/champions';
 import { playerIds } from 'data/players';
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [],
   },
 ]);
