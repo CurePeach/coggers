@@ -2,7 +2,9 @@ import App from 'App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { ChampionProfile } from 'routes/champion_profile';
 import { ErrorPage } from 'routes/error_page';
+import { MatchProfile } from 'routes/match_profile';
 import { PlayerProfile } from 'routes/player_profile';
 
 import { championIds } from 'data/champions';
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: 'champion/:championId?',
+        element: <ChampionProfile />,
+      },
+      {
+        path: 'match/:matchId?',
+        element: <MatchProfile />,
+      },
       {
         path: 'player/:playerId?',
         element: <PlayerProfile />,
