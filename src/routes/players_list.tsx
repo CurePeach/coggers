@@ -10,6 +10,10 @@ export const PlayersList = () => {
 
   const playersList: JSX.Element[] = [];
   for (const player of data.players) {
+    if (player.numGames === 0) {
+      continue;
+    }
+
     const champList: string[] = player.scores
       .map((score) => {
         return convert(score.champion);

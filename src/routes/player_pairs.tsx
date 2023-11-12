@@ -8,6 +8,10 @@ export const PlayerPairs = () => {
 
   const pairsList: JSX.Element[] = [];
   for (const pair of data.playerPairs) {
+    if (pair.numGames === 0) {
+      continue;
+    }
+
     pairsList.push(
       <div key={pair.firstPlayer + pair.secondPlayer}>
         <div>

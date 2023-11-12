@@ -8,6 +8,10 @@ export const ChampionsList = () => {
 
   const championList: JSX.Element[] = [];
   for (const champ of data.champions) {
+    if (champ.numPicks === 0 && champ.numBans === 0) {
+      continue;
+    }
+
     championList.push(
       <div key={champ.key}>
         <div>{champ.championName}</div>
