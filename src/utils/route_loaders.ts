@@ -58,6 +58,10 @@ for (const champ of champions) {
   }
 }
 
+export const championsListLoader = makeLoader(() => {
+  return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
+});
+
 export const championProfileLoader = makeLoader(() => {
   return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
 });

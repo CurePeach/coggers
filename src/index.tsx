@@ -3,12 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ChampionProfile } from 'routes/champion_profile';
+import { ChampionsList } from 'routes/champions_list';
 import { ErrorPage } from 'routes/error_page';
 import { MatchProfile } from 'routes/match_profile';
 import { PlayerProfile } from 'routes/player_profile';
 
 import {
   championProfileLoader,
+  championsListLoader,
   matchProfileLoader,
   playerProfileLoader,
 } from 'utils/route_loaders';
@@ -25,6 +27,11 @@ const router = createBrowserRouter([
         path: 'champion/:championId',
         element: <ChampionProfile />,
         loader: championProfileLoader,
+      },
+      {
+        path: 'champions',
+        element: <ChampionsList />,
+        loader: championsListLoader,
       },
       {
         path: 'match/:matchId',
