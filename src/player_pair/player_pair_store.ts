@@ -36,6 +36,13 @@ export class PlayerPairStore {
     return wins;
   }
 
+  get winRate() {
+    if (this.numGames === 0) {
+      return 0;
+    }
+    return this.numWins / this.numGames;
+  }
+
   constructor(p1: PlayerName, p2: PlayerName) {
     this.keys = [p1, p2];
   }
