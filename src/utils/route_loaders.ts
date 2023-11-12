@@ -52,12 +52,6 @@ for (const pair of playerPairs) {
   }
 }
 
-for (const champ of champions) {
-  if (champ.numPicks > 0 || champ.numBans > 0) {
-    champ.print();
-  }
-}
-
 export const championsListLoader = makeLoader(() => {
   return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
 });
