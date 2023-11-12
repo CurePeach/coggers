@@ -38,6 +38,14 @@ export class PlayerStore {
     return this.scores.length;
   }
 
+  @mobx.computed
+  get winRate() {
+    if (this.numGames === 0) {
+      return 0;
+    }
+    return this.numWins / this.numGames;
+  }
+
   constructor(name: PlayerName) {
     this.key = name;
   }
