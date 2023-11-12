@@ -7,12 +7,14 @@ import { ChampionsList } from 'routes/champions_list';
 import { ErrorPage } from 'routes/error_page';
 import { MatchProfile } from 'routes/match_profile';
 import { PlayerProfile } from 'routes/player_profile';
+import { PlayersList } from 'routes/players_list';
 
 import {
   championProfileLoader,
   championsListLoader,
   matchProfileLoader,
   playerProfileLoader,
+  playersListLoader,
 } from 'utils/route_loaders';
 
 import './index.css';
@@ -42,6 +44,11 @@ const router = createBrowserRouter([
         path: 'player/:playerId',
         element: <PlayerProfile />,
         loader: playerProfileLoader,
+      },
+      {
+        path: 'players',
+        element: <PlayersList />,
+        loader: playersListLoader,
       },
     ],
   },

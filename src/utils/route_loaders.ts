@@ -40,12 +40,6 @@ for (const matchDto of matchesS1) {
   updateChampionData(match, champions);
 }
 
-for (const player of players) {
-  if (player.numGames > 0) {
-    player.print();
-  }
-}
-
 for (const pair of playerPairs) {
   if (pair.numGames > 0) {
     pair.print();
@@ -61,6 +55,10 @@ export const championProfileLoader = makeLoader(() => {
 });
 
 export const playerProfileLoader = makeLoader(() => {
+  return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
+});
+
+export const playersListLoader = makeLoader(() => {
   return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
 });
 
