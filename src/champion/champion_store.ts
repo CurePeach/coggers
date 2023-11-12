@@ -39,6 +39,14 @@ export class ChampionStore {
     return wins;
   }
 
+  @mobx.computed
+  get winRate() {
+    if (this.numPicks === 0) {
+      return 0;
+    }
+    return this.numWins / this.numPicks;
+  }
+
   constructor(name: ChampionName) {
     mobx.makeObservable(this);
     this.key = name;
