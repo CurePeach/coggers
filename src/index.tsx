@@ -2,6 +2,7 @@ import App from 'App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
 import { ChampionProfile } from 'routes/champion_profile';
 import { ChampionsList } from 'routes/champions_list';
 import { ErrorPage } from 'routes/error_page';
