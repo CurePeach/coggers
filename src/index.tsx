@@ -22,17 +22,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'champion/:championId?',
+        path: 'champion/:championId',
         element: <ChampionProfile />,
         loader: championProfileLoader,
       },
       {
-        path: 'match/:matchId?',
+        path: 'match/:matchId',
         element: <MatchProfile />,
         loader: matchProfileLoader,
       },
       {
-        path: 'player/:playerId?',
+        path: 'player/:playerId',
         element: <PlayerProfile />,
         loader: playerProfileLoader,
       },
