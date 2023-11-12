@@ -21,35 +21,6 @@ import { PlayerPairStore } from 'player_pair/player_pair_store';
 
 import './index.css';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: 'champion/:championId?',
-        element: <ChampionProfile />,
-      },
-      {
-        path: 'match/:matchId?',
-        element: <MatchProfile />,
-      },
-      {
-        path: 'player/:playerId?',
-        element: <PlayerProfile />,
-      },
-    ],
-  },
-]);
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
-
 const players: PlayerStore[] = [];
 
 const playerPairs: PlayerPairStore[] = [];
@@ -95,3 +66,32 @@ for (const champ of champions) {
     champ.print();
   }
 }
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: 'champion/:championId?',
+        element: <ChampionProfile />,
+      },
+      {
+        path: 'match/:matchId?',
+        element: <MatchProfile />,
+      },
+      {
+        path: 'player/:playerId?',
+        element: <PlayerProfile />,
+      },
+    ],
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
