@@ -2350,7 +2350,7 @@ export const matchesS2: (MatchDto & ExtraMatchProperties)[] = [
     ],
   },
   {
-    id: 216,
+    id: 217,
     date: new Date('2023-06-13'),
     effect: 'Cute Champs Only',
     win: 'red',
