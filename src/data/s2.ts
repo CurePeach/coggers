@@ -1,6 +1,6 @@
 import { ExtraMatchProperties, MatchDto } from 'data/types';
 
-import { ChampionName } from './champions';
+import { ChampionName, championsStartsWith } from './champions';
 import { PlayerName } from './players';
 
 export const matchesS2: (MatchDto & ExtraMatchProperties)[] = [
@@ -1613,5 +1613,150 @@ export const matchesS2: (MatchDto & ExtraMatchProperties)[] = [
     },
     dragonSoul: 'cloud',
     events: ['Harrison got a 4/4/4 KDA -Harrison'],
+  },
+  {
+    id: 212,
+    date: new Date('2023-05-10'),
+    effect: 'Character Bans',
+    win: 'blue',
+    mvp: PlayerName.ElVaux,
+    ace: PlayerName.NightRaven,
+    draft: {
+      bans: {
+        blue: [
+          championsStartsWith('A'),
+          championsStartsWith('K'),
+          championsStartsWith('S'),
+          championsStartsWith('H'),
+          championsStartsWith('Z'),
+        ],
+        red: [
+          championsStartsWith('R'),
+          championsStartsWith('M'),
+          championsStartsWith('J'),
+          championsStartsWith('Y'),
+          championsStartsWith('V'),
+        ],
+      },
+      picks: {
+        blue: [
+          ChampionName.Ornn,
+          ChampionName.Wukong,
+          ChampionName.Twitch,
+          ChampionName.Lulu,
+          ChampionName.Ekko,
+        ],
+        red: [
+          ChampionName.Xayah,
+          ChampionName.Braum,
+          ChampionName.Olaf,
+          ChampionName.Nocturne,
+          ChampionName.Orianna,
+        ],
+      },
+    },
+    teams: {
+      blue: {
+        captain: PlayerName.Roland,
+        players: [
+          {
+            name: PlayerName.JemLem,
+            champion: ChampionName.Ornn,
+            role: 'top',
+            kills: 3,
+            deaths: 3,
+            assists: 14,
+            cs: 191,
+          },
+          {
+            name: PlayerName.ElVaux,
+            champion: ChampionName.Wukong,
+            role: 'jungle',
+            kills: 12,
+            deaths: 7,
+            assists: 9,
+            cs: 235,
+          },
+          {
+            name: PlayerName.Roland,
+            champion: ChampionName.Ekko,
+            role: 'mid',
+            kills: 15,
+            deaths: 3,
+            assists: 6,
+            cs: 266,
+          },
+          {
+            name: PlayerName.summon3r000,
+            champion: ChampionName.Twitch,
+            role: 'bot',
+            kills: 5,
+            deaths: 8,
+            assists: 13,
+            cs: 190,
+          },
+          {
+            name: PlayerName.ThePretender,
+            champion: ChampionName.Lulu,
+            role: 'support',
+            kills: 0,
+            deaths: 4,
+            assists: 21,
+            cs: 20,
+          },
+        ],
+      },
+      red: {
+        captain: PlayerName.Sewerslvt,
+        players: [
+          {
+            name: PlayerName.NightRaven,
+            champion: ChampionName.Olaf,
+            role: 'top',
+            kills: 11,
+            deaths: 5,
+            assists: 8,
+            cs: 255,
+          },
+          {
+            name: PlayerName.Sewerslvt,
+            champion: ChampionName.Nocturne,
+            role: 'jungle',
+            kills: 3,
+            deaths: 12,
+            assists: 11,
+            cs: 162,
+          },
+          {
+            name: PlayerName.CureLemonade,
+            champion: ChampionName.Orianna,
+            role: 'mid',
+            kills: 5,
+            deaths: 6,
+            assists: 8,
+            cs: 207,
+          },
+          {
+            name: PlayerName.Draghau,
+            champion: ChampionName.Xayah,
+            role: 'bot',
+            kills: 6,
+            deaths: 6,
+            assists: 7,
+            cs: 298,
+          },
+          {
+            name: PlayerName.Applesmustdie,
+            champion: ChampionName.Braum,
+            role: 'support',
+            kills: 0,
+            deaths: 6,
+            assists: 17,
+            cs: 29,
+          },
+        ],
+      },
+    },
+    dragonSoul: 'mountain',
   },
 ];
