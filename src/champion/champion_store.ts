@@ -1,4 +1,5 @@
 import * as mobx from 'mobx';
+
 import { ScoreStore } from 'score/score_store';
 
 import { ChampionName, convert } from '../data/champions';

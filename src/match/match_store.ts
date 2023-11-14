@@ -1,8 +1,9 @@
 import * as mobx from 'mobx';
-import { ScoreStore } from 'score/score_store';
 
 import { PlayerName } from 'data/players';
 import { DraftDto, Side } from 'data/types';
+
+import { ScoreStore } from 'score/score_store';
 
 export class MatchStore {
   @mobx.observable.ref
