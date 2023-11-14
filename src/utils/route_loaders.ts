@@ -11,6 +11,7 @@ import { MatchPresenter } from 'match/match_presenter';
 import { MatchStore } from 'match/match_store';
 import { PlayerStore } from 'player/player_store';
 import { PlayerPairStore } from 'player_pair/player_pair_store';
+import { matchesS2 } from 'data/s2';
 
 const players: PlayerStore[] = [];
 
@@ -40,26 +41,38 @@ for (const matchDto of matchesS1) {
   updateChampionData(match, champions);
 }
 
+const seasonTwo: MatchStore[] = [];
+for (const matchDto of matchesS2) {
+  const match = matchPresenter.createMatchStore(matchDto);
+  seasonTwo.push(match);
+
+  updatePlayerData(match, players);
+  updatePlayerPairData(match, playerPairs);
+  updateChampionData(match, champions);
+}
+
+const allMatches = seasonOne.concat(seasonTwo);
+
 export const championsListLoader = makeLoader(() => {
-  return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
+  return { champions: champions, players: players, playerPairs: playerPairs, matches: allMatches };
 });
 
 export const championProfileLoader = makeLoader(() => {
-  return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
+  return { champions: champions, players: players, playerPairs: playerPairs, matches: allMatches };
 });
 
 export const playerPairsLoader = makeLoader(() => {
-  return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
+  return { champions: champions, players: players, playerPairs: playerPairs, matches: allMatches };
 });
 
 export const playerProfileLoader = makeLoader(() => {
-  return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
+  return { champions: champions, players: players, playerPairs: playerPairs, matches: allMatches };
 });
 
 export const playersListLoader = makeLoader(() => {
-  return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
+  return { champions: champions, players: players, playerPairs: playerPairs, matches: allMatches };
 });
 
 export const matchProfileLoader = makeLoader(() => {
-  return { champions: champions, players: players, playerPairs: playerPairs, matches: seasonOne };
+  return { champions: champions, players: players, playerPairs: playerPairs, matches: allMatches };
 });
