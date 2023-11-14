@@ -1,5 +1,3 @@
-import { ScoreStore } from 'score/score_store';
-
 import { ChampionName } from 'data/champions';
 import { PlayerName } from 'data/players';
 
@@ -7,6 +5,7 @@ import { ChampionStore } from 'champion/champion_store';
 import { MatchStore } from 'match/match_store';
 import { PlayerStore } from 'player/player_store';
 import { PlayerPairStore } from 'player_pair/player_pair_store';
+import { ScoreStore } from 'score/score_store';
 
 export const updatePlayerData = (match: MatchStore, players: PlayerStore[]) => {
   const winningPlayers = getPlayerNames(match.winningTeam);

@@ -1,6 +1,6 @@
-import { ScoreStore } from 'score/score_store';
-
 import { MatchDto, Side, TeamDto } from 'data/types';
+
+import { ScoreStore } from 'score/score_store';
 
 import { MatchStore } from './match_store';
 
