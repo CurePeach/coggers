@@ -27,6 +27,14 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
           attribute="Win rate"
           value={`${(player.winRate * 100).toFixed(2)}% (${player.numWins} / ${player.numGames})`}
         />
+        <AttributeValuePair 
+          attribute="Number of MVPs"
+          value={player.numMvps.toString()}
+        />
+        <AttributeValuePair 
+          attribute="Number of Aces"
+          value={player.numAces.toString()}
+        />
         <AttributeValuePair
           attribute="Champions played"
           value={`${champList.join(', ')} (${champList.length})`}
