@@ -5,6 +5,8 @@ import { convert } from 'data/champions';
 
 import type { playersListLoader } from 'utils/route_loaders';
 
+import { Subheading, Title } from 'ui/typography';
+
 export const PlayersList = () => {
   const data = useLoaderData() as LoaderData<typeof playersListLoader>;
 
@@ -24,7 +26,7 @@ export const PlayersList = () => {
 
     playersList.push(
       <div key={player.key}>
-        <div>{player.playerName}</div>
+        <Subheading>{player.playerName}</Subheading>
         <div>
           Winrate: {(player.winRate * 100).toFixed(2)} ({player.numWins} / {player.numGames})
         </div>
@@ -33,5 +35,10 @@ export const PlayersList = () => {
     );
   }
 
-  return <div>{playersList}</div>;
+  return (
+    <div>
+      <Title>Players List</Title>
+      {playersList}
+    </div>
+  );
 };
