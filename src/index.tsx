@@ -9,7 +9,7 @@ import { ErrorPage } from 'routes/error_page';
 import { MatchProfile } from 'routes/match_profile';
 import { PlayerPairs } from 'routes/player_pairs';
 import { PlayerProfile } from 'routes/player_profile';
-import { PlayersList } from 'routes/players_list';
+import { PlayersList } from 'routes/players_list/players_list';
 
 import {
   championProfileLoader,
