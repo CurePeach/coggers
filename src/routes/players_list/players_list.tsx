@@ -16,7 +16,7 @@ export const PlayersList = () => {
       continue;
     }
 
-    playersList.push(<PlayerRow player={player} />);
+    playersList.push(<PlayerRow key={player.key} player={player} />);
   }
 
   return (
