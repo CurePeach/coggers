@@ -1,11 +1,19 @@
 .playerRow {
   display: flex;
   justify-content: space-around;
-  padding: 0.5rem 10rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem 10rem;
+  background-color: #A5CAEF;
+  border-radius: 5px;
+}
+
+.playerRow:hover {
+  background-color: #7AB1E7;
 }
 
 .playerName {
   width: 30%;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +21,7 @@
 
 .details {
   width: 70%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
