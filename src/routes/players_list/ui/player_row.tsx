@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import { convert } from 'data/champions';
 
@@ -32,7 +33,9 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
   return (
     <div key={player.key} className={styles.playerRow}>
       <div className={styles.playerName}>
-        <Subheading>{player.playerName}</Subheading>
+        <Subheading>
+          <Link to={`../player/${player.key}`}>{player.playerName}</Link>
+        </Subheading>
       </div>
       <div className={styles.details}>
         <AttributeValuePair
