@@ -4,7 +4,15 @@ import { ChampionStore } from 'champion/champion_store';
 
 import styles from './champion_row.module.css';
 
-export const ChampionRow = ({ champion }: { champion: ChampionStore }) => {
+export const ChampionRow = ({
+  champion,
+  numTotalGames,
+}: {
+  champion: ChampionStore;
+  numTotalGames: number;
+}) => {
+  const banRate = ((champion.numBans / numTotalGames) * 100).toFixed(2);
+
   return (
     <div key={champion.key} className={styles.championRow}>
       <div className={styles.championName}>
@@ -13,11 +21,14 @@ export const ChampionRow = ({ champion }: { champion: ChampionStore }) => {
       <div className={styles.details}>
         <AttributeValuePair
           attribute="Win rate"
-          value={`${(champion.winRate * 100).toFixed(2)} (${champion.numWins} / ${
+          value={`${(champion.winRate * 100).toFixed(2)}% (${champion.numWins} / ${
             champion.numPicks
           })`}
         />
-        <AttributeValuePair attribute="Number of bans" value={champion.numBans.toString()} />
+        <AttributeValuePair
+          attribute="Ban rate"
+          value={`${banRate}% (${champion.numBans} / ${numTotalGames})`}
+        />
       </div>
     </div>
   );
