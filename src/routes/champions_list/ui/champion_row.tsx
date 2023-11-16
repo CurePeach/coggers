@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { AttributeValuePair, Subheading } from 'ui/typography';
 
 import { ChampionStore } from 'champion/champion_store';
@@ -24,22 +26,24 @@ export const ChampionRow = ({
   }
 
   return (
-    <div key={champion.key} className={`${styles.championRow} ${backgroundStyle}`}>
-      <div className={styles.championName}>
-        <Subheading>{champion.championName}</Subheading>
+    <Link to={`../champion/${champion.key}`} className={styles.link}>
+      <div className={`${styles.championRow} ${backgroundStyle}`}>
+        <div className={styles.championName}>
+          <Subheading>{champion.championName}</Subheading>
+        </div>
+        <div className={styles.details}>
+          <AttributeValuePair
+            attribute="Win rate"
+            value={`${(champion.winRate * 100).toFixed(2)}% (${champion.numWins} / ${
+              champion.numPicks
+            })`}
+          />
+          <AttributeValuePair
+            attribute="Ban rate"
+            value={`${banRate}% (${champion.numBans} / ${numTotalGames})`}
+          />
+        </div>
       </div>
-      <div className={styles.details}>
-        <AttributeValuePair
-          attribute="Win rate"
-          value={`${(champion.winRate * 100).toFixed(2)}% (${champion.numWins} / ${
-            champion.numPicks
-          })`}
-        />
-        <AttributeValuePair
-          attribute="Ban rate"
-          value={`${banRate}% (${champion.numBans} / ${numTotalGames})`}
-        />
-      </div>
-    </div>
+    </Link>
   );
 };
