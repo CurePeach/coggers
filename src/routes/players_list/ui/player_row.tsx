@@ -34,7 +34,9 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
     <div key={player.key} className={styles.playerRow}>
       <div className={styles.playerName}>
         <Subheading>
-          <Link to={`../player/${player.key}`}>{player.playerName}</Link>
+          <Link to={`../player/${player.key}`} className={styles.link}>
+            {player.playerName}
+          </Link>
         </Subheading>
       </div>
       <div className={styles.details}>
