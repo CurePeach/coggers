@@ -3,6 +3,8 @@ import { LoaderData, useLoaderData } from 'react-router-typesafe';
 
 import type { championsListLoader } from 'utils/route_loaders';
 
+import { Title } from 'ui/typography';
+
 export const ChampionsList = () => {
   const data = useLoaderData() as LoaderData<typeof championsListLoader>;
 
@@ -23,5 +25,10 @@ export const ChampionsList = () => {
     );
   }
 
-  return <div>{championList}</div>;
+  return (
+    <div>
+      <Title>Champions List</Title>
+      {championList}
+    </div>
+  );
 };
