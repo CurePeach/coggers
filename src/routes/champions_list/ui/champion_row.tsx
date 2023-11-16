@@ -14,12 +14,13 @@ export const ChampionRow = ({
   const banRate = ((champion.numBans / numTotalGames) * 100).toFixed(2);
 
   let backgroundStyle: string;
-  if (champion.winRate > 0.75) {
+  if (champion.winRate >= 0.5) {
     backgroundStyle = styles.highWinRate;
-  } else if (champion.winRate > 0.25) {
-    backgroundStyle = styles.middleWinRate;
   } else {
     backgroundStyle = styles.lowWinRate;
+  }
+  if (champion.numPicks === 0) {
+    backgroundStyle = styles.onlyBans;
   }
 
   return (

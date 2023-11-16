@@ -17,20 +17,20 @@
   background-color: var(--dark-pink);
 }
 
-.middleWinRate {
-  background-color: var(--blue-blue);
-}
-
-.middleWinRate:hover {
-  background-color: var(--dark-blue);
-}
-
 .highWinRate {
   background-color: var(--green-green);
 }
 
 .highWinRate:hover {
   background-color: var(--dark-green);
+}
+
+.onlyBans {
+  background-color: var(--blue-blue);
+}
+
+.onlyBans:hover {
+  background-color: var(--dark-blue);
 }
 
 .championName {
