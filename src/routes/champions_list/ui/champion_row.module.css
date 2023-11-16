@@ -9,8 +9,28 @@
   border-radius: 5px;
 }
 
-.championRow:hover {
+.lowWinRate {
+  background-color: var(--pink-pink);
+}
+
+.lowWinRate:hover {
+  background-color: var(--dark-pink);
+}
+
+.middleWinRate {
+  background-color: var(--blue-blue);
+}
+
+.middleWinRate:hover {
   background-color: var(--dark-blue);
+}
+
+.highWinRate {
+  background-color: var(--green-green);
+}
+
+.highWinRate:hover {
+  background-color: var(--dark-green);
 }
 
 .championName {
@@ -28,13 +48,4 @@
   flex-direction: column;
   justify-content: center;
   text-align: start;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--dark-pink);
 }

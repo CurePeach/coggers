@@ -13,8 +13,17 @@ export const ChampionRow = ({
 }) => {
   const banRate = ((champion.numBans / numTotalGames) * 100).toFixed(2);
 
+  let backgroundStyle: string;
+  if (champion.winRate > 0.75) {
+    backgroundStyle = styles.highWinRate;
+  } else if (champion.winRate > 0.25) {
+    backgroundStyle = styles.middleWinRate;
+  } else {
+    backgroundStyle = styles.lowWinRate;
+  }
+
   return (
-    <div key={champion.key} className={styles.championRow}>
+    <div key={champion.key} className={`${styles.championRow} ${backgroundStyle}`}>
       <div className={styles.championName}>
         <Subheading>{champion.championName}</Subheading>
       </div>
