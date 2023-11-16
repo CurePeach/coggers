@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { ChampionProfile } from 'routes/champion_profile';
-import { ChampionsList } from 'routes/champions_list';
+import { ChampionsList } from 'routes/champions_list/champions_list';
 import { ErrorPage } from 'routes/error_page';
 import { MatchProfile } from 'routes/match_profile';
 import { PlayerPairs } from 'routes/player_pairs';
