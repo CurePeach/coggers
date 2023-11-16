@@ -5,6 +5,8 @@ import type { championsListLoader } from 'utils/route_loaders';
 
 import { Title } from 'ui/typography';
 
+import { ChampionRow } from './ui/champion_row';
+
 export const ChampionsList = () => {
   const data = useLoaderData() as LoaderData<typeof championsListLoader>;
 
@@ -13,16 +15,7 @@ export const ChampionsList = () => {
     if (champ.numPicks === 0 && champ.numBans === 0) {
       continue;
     }
-
-    championList.push(
-      <div key={champ.key}>
-        <div>{champ.championName}</div>
-        <div>
-          Winrate: {(champ.winRate * 100).toFixed(2)} ({champ.numWins} / {champ.numPicks})
-        </div>
-        <div>Number of bans: {champ.numBans}</div>
-      </div>
-    );
+    championList.push(<ChampionRow key={champ.key} champion={champ} />);
   }
 
   return (
