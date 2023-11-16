@@ -32,16 +32,20 @@ export const ChampionRow = ({
           <Subheading>{champion.championName}</Subheading>
         </div>
         <div className={styles.details}>
-          <AttributeValuePair
-            attribute="Win rate"
-            value={`${(champion.winRate * 100).toFixed(2)}% (${champion.numWins} / ${
-              champion.numPicks
-            })`}
-          />
-          <AttributeValuePair
-            attribute="Ban rate"
-            value={`${banRate}% (${champion.numBans} / ${numTotalGames})`}
-          />
+          {champion.numPicks > 0 && (
+            <AttributeValuePair
+              attribute="Win rate"
+              value={`${(champion.winRate * 100).toFixed(2)}% (${champion.numWins} / ${
+                champion.numPicks
+              })`}
+            />
+          )}
+          {champion.numBans > 0 && (
+            <AttributeValuePair
+              attribute="Ban rate"
+              value={`${banRate}% (${champion.numBans} / ${numTotalGames})`}
+            />
+          )}
         </div>
       </div>
     </Link>
