@@ -79,7 +79,7 @@ export const ChampionRow = ({
               value={`${banRate}% (${champion.numBans} / ${numTotalGames})`}
             />
           )}
-          <AttributeValuePair attribute="Presence" value={`${presence}% (${numPresence})`} />
+          <AttributeValuePair attribute="Presence" value={`${presence}% (${numPresence} / ${numTotalGames})`} />
           {champion.numPicks > 0 && (
             <AttributeValuePair
               attribute="Players"
