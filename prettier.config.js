@@ -11,6 +11,7 @@ const config = {
     '^data/(.*)$',
     '^routes/(.*)$',
     '^utils/(.*)$',
+    '^ui/(.*)$',
     '^(champion|match|player|player_pair|score)/(.*)$',
     '^[./]',
     '.css$',
