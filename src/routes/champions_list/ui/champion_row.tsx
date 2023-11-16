@@ -16,6 +16,8 @@ export const ChampionRow = ({
   numTotalGames: number;
 }) => {
   const banRate = ((champion.numBans / numTotalGames) * 100).toFixed(2);
+  const numPresence = champion.numBans + champion.numPicks;
+  const presence = ((numPresence / numTotalGames) * 100).toFixed(2);
 
   let backgroundStyle: string;
   if (champion.winRate >= 0.5) {
@@ -77,6 +79,7 @@ export const ChampionRow = ({
               value={`${banRate}% (${champion.numBans} / ${numTotalGames})`}
             />
           )}
+          <AttributeValuePair attribute="Presence" value={`${presence}% (${numPresence})`} />
           {champion.numPicks > 0 && (
             <AttributeValuePair
               attribute="Players"
