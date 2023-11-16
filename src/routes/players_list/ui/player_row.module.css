@@ -1,14 +1,16 @@
+@import 'ui/colors.css';
+
 .playerRow {
   display: flex;
   justify-content: space-around;
   padding: 0.5rem 1rem;
   margin: 1rem 10rem;
-  background-color: #a5caef;
+  background-color: var(--blue-blue);
   border-radius: 5px;
 }
 
 .playerRow:hover {
-  background-color: #7ab1e7;
+  background-color: var(--dark-blue);
 }
 
 .playerName {
@@ -34,5 +36,5 @@ a {
 }
 
 a:hover {
-  color: #e77ab1;
+  color: var(--dark-pink);
 }

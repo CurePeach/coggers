@@ -1,6 +1,8 @@
+@import 'ui/colors.css';
+
 .App {
   text-align: center;
-  background-color: #fefefe;
+  background-color: var(--off-white);
 }
 
 .App-logo {
