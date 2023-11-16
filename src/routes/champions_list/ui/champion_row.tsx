@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import { convert } from 'data/players';
+
 import { AttributeValuePair, Subheading } from 'ui/typography';
 
 import { ChampionStore } from 'champion/champion_store';
@@ -25,6 +27,35 @@ export const ChampionRow = ({
     backgroundStyle = styles.onlyBans;
   }
 
+  const playerFrequencies: Record<string, number> = {};
+  const playerWins: Record<string, number> = {};
+  champion.scores.forEach((score) => {
+    const championName = convert(score.player);
+    if (playerFrequencies[championName]) {
+      playerFrequencies[championName] += 1;
+    } else {
+      playerFrequencies[championName] = 1;
+    }
+
+    if (!playerWins[championName]) {
+      playerWins[championName] = 0;
+    }
+    if (score.win) {
+      playerWins[championName] += 1;
+    }
+  });
+
+  const playerList: string[] = champion.scores
+    .map((score) => {
+      return convert(score.player);
+    })
+    .filter((value, index, self) => {
+      return index === self.indexOf(value);
+    })
+    .sort()
+    .sort((a, b) => playerFrequencies[b] - playerFrequencies[a])
+    .sort((a, b) => playerWins[b] / playerFrequencies[b] - playerWins[a] / playerFrequencies[a]);
+
   return (
     <Link to={`../champion/${champion.key}`} className={styles.link}>
       <div className={`${styles.championRow} ${backgroundStyle}`}>
@@ -44,6 +75,12 @@ export const ChampionRow = ({
             <AttributeValuePair
               attribute="Ban rate"
               value={`${banRate}% (${champion.numBans} / ${numTotalGames})`}
+            />
+          )}
+          {champion.numPicks > 0 && (
+            <AttributeValuePair
+              attribute="Players"
+              value={`${playerList.join(', ')} (${playerList.length})`}
             />
           )}
         </div>
