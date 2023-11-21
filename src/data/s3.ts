@@ -1,6 +1,6 @@
 import { ChampionName } from './champions';
 import { PlayerName } from './players';
-import { ExtraMatchProperties, MatchDto } from './types';
+import { ExtraMatchProperties, MatchDto, getDuration } from './types';
 
 export const matchesS3: (MatchDto & ExtraMatchProperties)[] = [
   {
@@ -146,7 +146,7 @@ export const matchesS3: (MatchDto & ExtraMatchProperties)[] = [
         ],
       },
     },
-    duration: 29 * 60 + 53,
+    duration: getDuration(29, 53),
     dragonSoul: 'mountain',
     events: [
       "Gordon didn't get his penta",
@@ -296,7 +296,7 @@ export const matchesS3: (MatchDto & ExtraMatchProperties)[] = [
         ],
       },
     },
-    duration: 39 * 60 + 34,
+    duration: getDuration(39, 34),
     dragonSoul: 'ocean',
     events: ['James stole my blue -Ian'],
   },
