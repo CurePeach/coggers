@@ -619,12 +619,7 @@ export const matchesS3: (MatchDto & ExtraMatchProperties)[] = [
         ],
       },
       picks: {
-        blue: [
-          ChampionName.Viego,
-          ChampionName.Shen,
-          ChampionName.Zac,
-          ChampionName.Tryndamere,
-        ],
+        blue: [ChampionName.Viego, ChampionName.Shen, ChampionName.Zac, ChampionName.Tryndamere],
         red: [
           ChampionName.Rumble,
           ChampionName.Mordekaiser,
