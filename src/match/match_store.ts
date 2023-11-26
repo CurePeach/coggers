@@ -2,7 +2,6 @@ import * as mobx from 'mobx';
 
 import { PlayerName } from 'data/players';
 import { DraftDto, Side } from 'data/types';
-
 import { ScoreStore } from 'score/score_store';
 
 export class MatchStore {
