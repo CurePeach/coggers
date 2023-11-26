@@ -8,11 +8,7 @@ const config = {
   printWidth: 100,
   importOrder: [
     '<THIRD_PARTY_MODULES>',
-    '^data/(.*)$',
-    '^routes/(.*)$',
-    '^utils/(.*)$',
-    '^ui/(.*)$',
-    '^(champion|match|player|player_pair|score)/(.*)$',
+    '^(champion|data|match|player|player_pair|routes|score|ui|utils)/(.*)$',
     '^[./]',
     '.css$',
   ],
