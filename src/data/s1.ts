@@ -1605,7 +1605,7 @@ export const matchesS1: (MatchDto & ExtraMatchProperties)[] = [
             cs: 142,
           },
           {
-            name: PlayerName.NVRPY,
+            name: PlayerName.Ryan,
             champion: ChampionName.Lissandra,
             role: 'mid',
             kills: 4,
