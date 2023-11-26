@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 
 import { ChampionStore } from 'champion/champion_store';
 import { convert } from 'data/players';
-import { AttributeValuePair, Subheading } from 'ui/typography';
+import { ChampionIcon } from 'ui/champion_icon';
+import { AttributeValuePair, EmphasizedText } from 'ui/typography';
 
 import styles from './champion_row.module.css';
 
@@ -60,7 +61,8 @@ export const ChampionRow = ({
     <Link to={`../champion/${champion.key}`} className={styles.link}>
       <div className={`${styles.championRow} ${backgroundStyle}`}>
         <div className={styles.championName}>
-          <Subheading>{champion.championName}</Subheading>
+          <ChampionIcon championId={champion.key} />
+          <EmphasizedText>{champion.championName}</EmphasizedText>
         </div>
         <div className={styles.details}>
           {champion.numPicks > 0 && (
