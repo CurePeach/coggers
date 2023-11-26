@@ -778,7 +778,7 @@ export const matchesS3: (MatchDto & ExtraMatchProperties)[] = [
             cs: 246,
           },
           {
-            name: PlayerName.NVRPY,
+            name: PlayerName.Ryan,
             champion: ChampionName.Kassadin,
             role: 'mid',
             kills: 4,
@@ -2264,7 +2264,7 @@ export const matchesS3: (MatchDto & ExtraMatchProperties)[] = [
             cs: 229,
           },
           {
-            name: PlayerName.NVRPY,
+            name: PlayerName.Ryan,
             champion: ChampionName.MissFortune,
             role: 'bot',
             kills: 6,
@@ -2481,7 +2481,7 @@ export const matchesS3: (MatchDto & ExtraMatchProperties)[] = [
         captain: PlayerName.Roland,
         players: [
           {
-            name: PlayerName.NVRPY,
+            name: PlayerName.Ryan,
             champion: ChampionName.Zed,
             role: 'top',
             kills: 4,
