@@ -1,0 +1,17 @@
+.iconContainer {
+  margin: 10px;
+}
+
+.medium {
+  width: 100px;
+  border-radius: 50px;
+}
+
+.small {
+  width: 60px;
+  border-radius: 30px;
+}
+
+.inline {
+  height: 1rem;
+}

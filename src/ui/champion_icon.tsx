@@ -1,16 +1,25 @@
+import classNames from 'classnames';
+
 import { getChampionAsset } from 'assets/asset_mapper';
 import { ChampionName, convert } from 'data/champions';
 
+import styles from './champion_icon.module.css';
+
 export type ChampionIconProps = {
   championId: ChampionName;
+  size: 'medium' | 'small' | 'inline';
 };
 
-export const ChampionIcon = ({ championId }: ChampionIconProps) => (
-  <div style={{ margin: '10px' }}>
+export const ChampionIcon = ({ championId, size }: ChampionIconProps) => (
+  <div className={styles.iconContainer}>
     <img
       src={getChampionAsset(championId)}
       alt={convert(championId)}
-      style={{ borderRadius: '50px', width: 100 }}
+      className={classNames({
+        [styles.medium]: size === 'medium',
+        [styles.small]: size === 'small',
+        [styles.inline]: size === 'inline',
+      })}
     />
   </div>
 );

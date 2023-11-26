@@ -61,7 +61,7 @@ export const ChampionRow = ({
     <Link to={`../champion/${champion.key}`} className={styles.link}>
       <div className={`${styles.championRow} ${backgroundStyle}`}>
         <div className={styles.championName}>
-          <ChampionIcon championId={champion.key} />
+          <ChampionIcon championId={champion.key} size="medium" />
           <EmphasizedText>{champion.championName}</EmphasizedText>
         </div>
         <div className={styles.details}>
