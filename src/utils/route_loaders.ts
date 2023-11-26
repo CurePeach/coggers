@@ -4,6 +4,7 @@ import { championIds } from 'data/champions';
 import { playerIds } from 'data/players';
 import { matchesS1 } from 'data/s1';
 import { matchesS2 } from 'data/s2';
+import { matchesS3 } from 'data/s3';
 
 import { updateChampionData, updatePlayerData, updatePlayerPairData } from 'utils/match_helpers';
 
@@ -51,7 +52,17 @@ for (const matchDto of matchesS2) {
   updateChampionData(match, champions);
 }
 
-const allMatches = seasonOne.concat(seasonTwo);
+const seasonThree: MatchStore[] = [];
+for (const matchDto of matchesS3) {
+  const match = matchPresenter.createMatchStore(matchDto);
+  seasonThree.push(match);
+
+  updatePlayerData(match, players);
+  updatePlayerPairData(match, playerPairs);
+  updateChampionData(match, champions);
+}
+
+const allMatches = seasonOne.concat(seasonTwo).concat(seasonThree);
 
 export const championsListLoader = makeLoader(() => {
   return { champions: champions, players: players, playerPairs: playerPairs, matches: allMatches };
