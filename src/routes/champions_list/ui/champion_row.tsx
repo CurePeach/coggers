@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { convert } from 'data/players';
-
-import { AttributeValuePair, Subheading } from 'ui/typography';
-
 import { ChampionStore } from 'champion/champion_store';
+import { convert } from 'data/players';
+import { AttributeValuePair, Subheading } from 'ui/typography';
 
 import styles from './champion_row.module.css';
 

@@ -1,7 +1,6 @@
 import * as mobx from 'mobx';
 
 import { PlayerName, convert } from 'data/players';
-
 import { ScoreStore } from 'score/score_store';
 
 export class PlayerPairStore {

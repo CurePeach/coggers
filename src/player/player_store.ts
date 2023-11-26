@@ -2,7 +2,6 @@ import * as mobx from 'mobx';
 
 import { convert as championConvert } from 'data/champions';
 import { PlayerName, convert as playerConvert } from 'data/players';
-
 import { ScoreStore } from 'score/score_store';
 
 export class PlayerStore {
