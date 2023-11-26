@@ -49,3 +49,5 @@ export type Side = 'blue' | 'red';
 export type Dragon = 'infernal' | 'mountain' | 'ocean' | 'cloud' | 'hextech' | 'chemtech';
 
 export type Role = 'top' | 'jungle' | 'mid' | 'bot' | 'support' | 'aram';
+
+export const getDuration = (minutes: number, seconds: number) => minutes * 60 + seconds;
