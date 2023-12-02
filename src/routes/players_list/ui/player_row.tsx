@@ -8,16 +8,20 @@ import { ChampionName } from 'ui/champion_name/champion_name';
 
 import styles from './player_row.module.css';
 
+type Frequency = {
+  id: ChampionId,
+  frequency: number,
+};
+
 export const PlayerRow = ({ player }: { player: PlayerStore }) => {
-  const champFrequencies: Record<string, number> = {};
-  const champValuePairs: Record<string, ChampionId> = {};
+  const champFrequencies: Record<string, Frequency> = {};
   player.scores.forEach((score) => {
     const championName = convert(score.champion);
     if (champFrequencies[championName]) {
-      champFrequencies[championName] += 1;
+      champFrequencies[championName].frequency += 1;
     } else {
-      champFrequencies[championName] = 1;
-      champValuePairs[championName] = score.champion;
+      champFrequencies[championName].frequency = 1;
+      champFrequencies[championName].id = score.champion;
     }
   });
 
@@ -29,11 +33,11 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
       return index === self.indexOf(value);
     })
     .sort()
-    .sort((a, b) => champFrequencies[b] - champFrequencies[a]);
+    .sort((a, b) => champFrequencies[b].frequency - champFrequencies[a].frequency);
 
   const champList: React.ReactNode[] = [];
   champSortedList.forEach((champ, index) => {
-    const key = champValuePairs[champ];
+    const key = champFrequencies[champ].id;
     const withComma = index !== champSortedList.length - 1;
     champList.push(<ChampionName key={key} championId={key} withComma={withComma} />);
   });
