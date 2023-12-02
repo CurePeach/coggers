@@ -1,24 +1,27 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { convert } from 'data/champions';
+import { ChampionName as ChampionId, convert } from 'data/champions';
 import type { PlayerStore } from 'player/player_store';
 import { AttributeValuePair, Subheading } from 'ui/base/typography';
+import { ChampionName } from 'ui/champion_name/champion_name';
 
 import styles from './player_row.module.css';
 
 export const PlayerRow = ({ player }: { player: PlayerStore }) => {
   const champFrequencies: Record<string, number> = {};
+  const champValuePairs: Record<string, ChampionId> = {};
   player.scores.forEach((score) => {
     const championName = convert(score.champion);
     if (champFrequencies[championName]) {
       champFrequencies[championName] += 1;
     } else {
       champFrequencies[championName] = 1;
+      champValuePairs[championName] = score.champion;
     }
   });
 
-  const champList: string[] = player.scores
+  const champSortedList: string[] = player.scores
     .map((score) => {
       return convert(score.champion);
     })
@@ -27,6 +30,13 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
     })
     .sort()
     .sort((a, b) => champFrequencies[b] - champFrequencies[a]);
+
+  const champList: React.ReactNode[] = [];
+  champSortedList.forEach((champ, index) => {
+    const key = champValuePairs[champ];
+    const withComma = index !== champSortedList.length - 1;
+    champList.push(<ChampionName key={key} championId={key} withComma={withComma} />);
+  });
 
   return (
     <div key={player.key} className={styles.playerRow}>
@@ -44,10 +54,9 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
         />
         <AttributeValuePair attribute="Number of MVPs" value={player.numMvps.toString()} />
         <AttributeValuePair attribute="Number of Aces" value={player.numAces.toString()} />
-        <AttributeValuePair
-          attribute="Champions played"
-          value={`${champList.join(', ')} (${champList.length})`}
-        />
+        <div>
+          <b>Champions played:</b> {champList}
+        </div>
       </div>
     </div>
   );
