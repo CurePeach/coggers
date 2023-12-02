@@ -4,11 +4,8 @@ import { ScoreStore } from 'score/score_store';
 
 export class PlayerStore {
   key: PlayerName;
-
   numMvps: number = 0;
-
   numAces: number = 0;
-
   scores: ScoreStore[] = [];
 
   get playerName() {

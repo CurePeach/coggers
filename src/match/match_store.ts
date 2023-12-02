@@ -4,21 +4,14 @@ import { ScoreStore } from 'score/score_store';
 
 export class MatchStore {
   id: number;
-
   date: Date;
-
   effect: string;
-
   win: Side;
-
   mvp: PlayerName;
-
   ace: PlayerName;
 
   draft: DraftDto;
-
   blueTeam: ScoreStore[];
-
   redTeam: ScoreStore[];
 
   get winningTeam() {

@@ -4,9 +4,7 @@ import { ChampionName, convert } from '../data/champions';
 
 export class ChampionStore {
   key: ChampionName;
-
   bans: number[] = [];
-
   scores: ScoreStore[] = [];
 
   get championName() {
