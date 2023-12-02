@@ -9,8 +9,8 @@ import { ChampionName } from 'ui/champion_name/champion_name';
 import styles from './player_row.module.css';
 
 type Frequency = {
-  id: ChampionId,
-  frequency: number,
+  id: ChampionId;
+  frequency: number;
 };
 
 export const PlayerRow = ({ player }: { player: PlayerStore }) => {
