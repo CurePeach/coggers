@@ -1,31 +1,22 @@
-import * as mobx from 'mobx';
-
 import { PlayerName, convert } from 'data/players';
 import { ScoreStore } from 'score/score_store';
 
 export class PlayerPairStore {
-  @mobx.observable.ref
   keys: [PlayerName, PlayerName];
-
-  @mobx.observable.ref
   scoresTogether: [ScoreStore, ScoreStore][] = [];
 
-  @mobx.computed
   get firstPlayer() {
     return convert(this.keys[0]);
   }
 
-  @mobx.computed
   get secondPlayer() {
     return convert(this.keys[1]);
   }
 
-  @mobx.computed
   get numGames() {
     return this.scoresTogether.length;
   }
 
-  @mobx.computed
   get numWins() {
     let wins = 0;
     this.scoresTogether.forEach(([firstScore, _secondScore]) => {
