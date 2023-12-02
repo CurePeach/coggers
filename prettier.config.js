@@ -8,7 +8,7 @@ const config = {
   printWidth: 100,
   importOrder: [
     '<THIRD_PARTY_MODULES>',
-    '^(champion|data|match|player|player_pair|routes|score|ui|utils)/(.*)$',
+    '^(assets|champion|data|match|player|player_pair|routes|score|ui|utils)/(.*)$',
     '^[./]',
     '.css$',
   ],
