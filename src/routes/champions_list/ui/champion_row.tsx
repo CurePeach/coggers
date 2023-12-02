@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { ChampionStore } from 'champion/champion_store';
 import { convert } from 'data/players';
-import { ChampionIcon } from 'ui/champion_icon';
+import { ChampionIcon } from 'ui/champion_icon/champion_icon';
 import { AttributeValuePair, EmphasizedText } from 'ui/typography';
 
 import styles from './champion_row.module.css';
