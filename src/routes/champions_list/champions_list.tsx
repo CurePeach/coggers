@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LoaderData, useLoaderData } from 'react-router-typesafe';
 
-import { AttributeValuePair, Title } from 'ui/typography';
+import { AttributeValuePair, Title } from 'ui/base/typography';
 import type { championsListLoader } from 'utils/route_loaders';
 
 import styles from './champions_list.module.css';

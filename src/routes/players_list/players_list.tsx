@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LoaderData, useLoaderData } from 'react-router-typesafe';
 
-import { Title } from 'ui/typography';
+import { Title } from 'ui/base/typography';
 import type { playersListLoader } from 'utils/route_loaders';
 
 import { PlayerRow } from './ui/player_row';

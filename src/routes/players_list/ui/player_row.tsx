@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { convert } from 'data/champions';
 import type { PlayerStore } from 'player/player_store';
-import { AttributeValuePair, Subheading } from 'ui/typography';
+import { AttributeValuePair, Subheading } from 'ui/base/typography';
 
 import styles from './player_row.module.css';
 
