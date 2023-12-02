@@ -11,7 +11,12 @@ export type ChampionIconProps = {
 };
 
 export const ChampionIcon = ({ championId, size }: ChampionIconProps) => (
-  <div className={styles.iconContainer}>
+  <div
+    className={classNames({
+      [styles.iconInlineContainer]: size === 'inline',
+      [styles.iconContainer]: size !== 'inline',
+    })}
+  >
     <img
       src={getChampionAsset(championId)}
       alt={convert(championId)}
