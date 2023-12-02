@@ -1,38 +1,19 @@
-import * as mobx from 'mobx';
-
 import { PlayerName } from 'data/players';
 import { DraftDto, Side } from 'data/types';
 import { ScoreStore } from 'score/score_store';
 
 export class MatchStore {
-  @mobx.observable.ref
   id: number;
-
-  @mobx.observable.ref
   date: Date;
-
-  @mobx.observable.ref
   effect: string;
-
-  @mobx.observable.ref
   win: Side;
-
-  @mobx.observable.ref
   mvp: PlayerName;
-
-  @mobx.observable.ref
   ace: PlayerName;
 
-  @mobx.observable.ref
   draft: DraftDto;
-
-  @mobx.observable.ref
   blueTeam: ScoreStore[];
-
-  @mobx.observable.ref
   redTeam: ScoreStore[];
 
-  @mobx.computed
   get winningTeam() {
     if (this.win === 'blue') {
       return this.blueTeam;
@@ -41,7 +22,6 @@ export class MatchStore {
     return this.redTeam;
   }
 
-  @mobx.computed
   get losingTeam() {
     if (this.win === 'blue') {
       return this.redTeam;
@@ -61,8 +41,6 @@ export class MatchStore {
     blueTeam: ScoreStore[],
     redTeam: ScoreStore[]
   ) {
-    mobx.makeObservable(this);
-
     this.id = id;
 
     this.date = date;
