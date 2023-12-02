@@ -2,6 +2,11 @@
   margin: 10px;
 }
 
+.iconInlineContainer {
+  margin: 0px 5px;
+  display: inline;
+}
+
 .medium {
   width: 100px;
   border-radius: 50px;
@@ -14,4 +19,7 @@
 
 .inline {
   height: 1rem;
+  border-style: solid;
+  vertical-align: middle;
+  border-radius: 3px;
 }
