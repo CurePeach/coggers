@@ -14,6 +14,8 @@ type Frequency = {
 };
 
 export const PlayerRow = ({ player }: { player: PlayerStore }) => {
+  // TODO: there has got to be an easier way to do this - one where i don't have to create
+  // THREE data structures :sus:
   const champFrequencies: Record<string, Frequency> = {};
   player.scores.forEach((score) => {
     const championName = convert(score.champion);
