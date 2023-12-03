@@ -1,0 +1,10 @@
+@import 'ui/base/colors.css';
+
+.matchRow {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 1rem;
+  margin: 1rem 10rem;
+  background-color: var(--blue-blue);
+  border-radius: 5px;
+}
