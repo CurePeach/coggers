@@ -25,7 +25,7 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
       const newFrequency = {
         frequency: 1,
         id: score.champion,
-      }
+      };
       champFrequencies[championName] = newFrequency;
     }
   });
