@@ -22,8 +22,11 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
     if (champFrequencies[championName]) {
       champFrequencies[championName].frequency += 1;
     } else {
-      champFrequencies[championName].frequency = 1;
-      champFrequencies[championName].id = score.champion;
+      const newFrequency = {
+        frequency: 1,
+        id: score.champion,
+      };
+      champFrequencies[championName] = newFrequency;
     }
   });
 
@@ -61,7 +64,7 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
         <AttributeValuePair attribute="Number of MVPs" value={player.numMvps.toString()} />
         <AttributeValuePair attribute="Number of Aces" value={player.numAces.toString()} />
         <div>
-          <b>Champions played:</b> {champList}
+          <b>Champions played:</b> {champList} ({champList.length})
         </div>
       </div>
     </div>
