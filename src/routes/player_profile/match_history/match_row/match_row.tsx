@@ -11,19 +11,31 @@ export type MatchRowProps = {
 };
 
 export const MatchRow = ({ score, match }: MatchRowProps) => {
-  const blueTeam = match.blueTeam.map((score, index) => {
+  const blueTeam = match.blueTeam.map((thisScore, index) => {
+    let playerName: React.ReactNode;
+    if (score.player === thisScore.player) {
+      playerName = <b>{convert(thisScore.player)}</b>;
+    } else {
+      playerName = convert(thisScore.player);
+    }
     return (
       <div key={index}>
-        <ChampionIcon championId={score.champion} size="inline" />
-        {convert(score.player)}
+        <ChampionIcon championId={thisScore.champion} size="inline" />
+        {playerName}
       </div>
     );
   });
-  const redTeam = match.redTeam.map((score, index) => {
+  const redTeam = match.redTeam.map((thisScore, index) => {
+    let playerName: React.ReactNode;
+    if (score.player === thisScore.player) {
+      playerName = <b>{convert(thisScore.player)}</b>;
+    } else {
+      playerName = convert(thisScore.player);
+    }
     return (
       <div key={index}>
-        <ChampionIcon championId={score.champion} size="inline" />
-        {convert(score.player)}
+        <ChampionIcon championId={thisScore.champion} size="inline" />
+        {playerName}
       </div>
     );
   });
