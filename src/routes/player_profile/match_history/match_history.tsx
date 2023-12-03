@@ -1,6 +1,7 @@
 import { PlayerStore } from 'player/player_store';
 import { Subheading } from 'ui/base/typography';
 
+import styles from './match_history.module.css';
 import { MatchRow } from './match_row/match_row';
 
 export type MatchHistoryProps = {
@@ -14,7 +15,7 @@ export const MatchHistory = ({ player }: MatchHistoryProps) => {
   });
 
   return (
-    <div>
+    <div className={styles.matchHistoryContainer}>
       <Subheading>Match History</Subheading>
       <div>{matches}</div>
     </div>
