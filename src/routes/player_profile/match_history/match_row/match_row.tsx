@@ -45,7 +45,7 @@ export const MatchRow = ({ score, match }: MatchRowProps) => {
       <div>
         <ChampionIcon championId={score.champion} size="small" />
       </div>
-      <div>
+      <div className={styles.kdaContainer}>
         {score.kills}/{score.deaths}/{score.assists}
         <br />
         {score.kda.toFixed(2)} KDA

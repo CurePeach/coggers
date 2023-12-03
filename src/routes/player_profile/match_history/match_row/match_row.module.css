@@ -11,6 +11,10 @@
   border-radius: 5px;
 }
 
+.kdaContainer {
+  width: 100px;
+}
+
 .teams {
   display: flex;
 }
