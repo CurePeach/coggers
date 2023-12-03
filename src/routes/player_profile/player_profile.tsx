@@ -29,7 +29,7 @@ export const PlayerProfile = () => {
   return (
     <div>
       <Title>{player.playerName}</Title>
-      <MatchHistory player={player} />
+      <MatchHistory player={player} allMatches={data.matches} />
     </div>
   );
 };

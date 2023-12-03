@@ -10,3 +10,14 @@
   background-color: var(--blue-blue);
   border-radius: 5px;
 }
+
+.teams {
+  display: flex;
+}
+
+.teamContainer {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

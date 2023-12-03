@@ -1,3 +1,5 @@
+import { convert } from 'data/players';
+import { MatchStore } from 'match/match_store';
 import type { ScoreStore } from 'score/score_store';
 import { ChampionIcon } from 'ui/base/champion_icon/champion_icon';
 
@@ -5,9 +7,27 @@ import styles from './match_row.module.css';
 
 export type MatchRowProps = {
   score: ScoreStore;
+  match: MatchStore;
 };
 
-export const MatchRow = ({ score }: MatchRowProps) => {
+export const MatchRow = ({ score, match }: MatchRowProps) => {
+  const blueTeam = match.blueTeam.map((score, index) => {
+    return (
+      <div key={index}>
+        <ChampionIcon championId={score.champion} size="inline" />
+        {convert(score.player)}
+      </div>
+    );
+  });
+  const redTeam = match.redTeam.map((score, index) => {
+    return (
+      <div key={index}>
+        <ChampionIcon championId={score.champion} size="inline" />
+        {convert(score.player)}
+      </div>
+    );
+  });
+
   return (
     <div className={styles.matchRow}>
       <div>
@@ -19,6 +39,10 @@ export const MatchRow = ({ score }: MatchRowProps) => {
         {score.kda.toFixed(2)} KDA
         <br />
         {score.cs} CS
+      </div>
+      <div className={styles.teams}>
+        <div className={styles.teamContainer}>{blueTeam}</div>
+        <div className={styles.teamContainer}>{redTeam}</div>
       </div>
     </div>
   );
