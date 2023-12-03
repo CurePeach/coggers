@@ -13,7 +13,7 @@ export const ChampionName = ({ championId, withComma }: ChampionNameProps) => {
     <>
       <ChampionIcon championId={championId} size="inline" />
       {convert(championId)}
-      {withComma && ','}{' '}
+      {withComma && ', '}
     </>
   );
 };
