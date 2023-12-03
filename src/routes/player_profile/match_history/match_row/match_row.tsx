@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import { convert } from 'data/players';
 import { MatchStore } from 'match/match_store';
@@ -18,7 +19,11 @@ export const MatchRow = ({ score, match }: MatchRowProps) => {
     if (score.player === thisScore.player) {
       playerName = <b>{convert(thisScore.player)}</b>;
     } else {
-      playerName = convert(thisScore.player);
+      playerName = (
+        <Link to={`../player/${thisScore.player}`} className={styles.link}>
+          {convert(thisScore.player)}
+        </Link>
+      );
     }
     return (
       <div key={index}>
@@ -32,7 +37,11 @@ export const MatchRow = ({ score, match }: MatchRowProps) => {
     if (score.player === thisScore.player) {
       playerName = <b>{convert(thisScore.player)}</b>;
     } else {
-      playerName = convert(thisScore.player);
+      playerName = (
+        <Link to={`../player/${thisScore.player}`} className={styles.link}>
+          {convert(thisScore.player)}
+        </Link>
+      );
     }
     return (
       <div key={index}>
@@ -51,7 +60,7 @@ export const MatchRow = ({ score, match }: MatchRowProps) => {
     >
       <div className={styles.matchDetails}>
         <b>{match.effect}</b>
-        <br/>
+        <br />
         {match.date.toLocaleDateString()}
       </div>
       <div>
