@@ -7,6 +7,8 @@ import { ErrorPage } from 'routes/error_page';
 import { Title } from 'ui/base/typography';
 import type { playerProfileLoader } from 'utils/route_loaders';
 
+import { MatchHistory } from './match_history/match_history';
+
 export const PlayerProfile = () => {
   const data = useLoaderData() as LoaderData<typeof playerProfileLoader>;
   const params = useParams();
@@ -27,6 +29,7 @@ export const PlayerProfile = () => {
   return (
     <div>
       <Title>{player.playerName}</Title>
+      <MatchHistory player={player} />
     </div>
   );
 };
