@@ -49,6 +49,11 @@ export const MatchRow = ({ score, match }: MatchRowProps) => {
         [styles.loss]: score.win === false,
       })}
     >
+      <div className={styles.matchDetails}>
+        <b>{match.effect}</b>
+        <br/>
+        {match.date.toLocaleDateString()}
+      </div>
       <div>
         <ChampionIcon championId={score.champion} size="small" />
       </div>

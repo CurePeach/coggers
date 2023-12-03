@@ -19,6 +19,11 @@
   background-color: var(--pink-pink);
 }
 
+.matchDetails {
+  width: 150px;
+  text-align: left;
+}
+
 .kdaContainer {
   width: 100px;
 }
