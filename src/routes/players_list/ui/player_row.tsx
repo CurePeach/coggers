@@ -64,7 +64,7 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
         <AttributeValuePair attribute="Number of MVPs" value={player.numMvps.toString()} />
         <AttributeValuePair attribute="Number of Aces" value={player.numAces.toString()} />
         <div>
-          <b>Champions played:</b> {champList}
+          <b>Champions played:</b> {champList} ({champList.length})
         </div>
       </div>
     </div>
