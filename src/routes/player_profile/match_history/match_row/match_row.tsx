@@ -59,7 +59,9 @@ export const MatchRow = ({ score, match }: MatchRowProps) => {
       })}
     >
       <div className={styles.matchDetails}>
-        <b>{match.effect}</b>
+        <Link to={`../match/${match.id}`} className={styles.link}>
+          <b>{match.effect}</b>
+        </Link>
         <br />
         {match.date.toLocaleDateString()}
       </div>
