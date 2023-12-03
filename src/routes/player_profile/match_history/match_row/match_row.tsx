@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { convert } from 'data/players';
 import { MatchStore } from 'match/match_store';
 import type { ScoreStore } from 'score/score_store';
@@ -41,7 +43,12 @@ export const MatchRow = ({ score, match }: MatchRowProps) => {
   });
 
   return (
-    <div className={styles.matchRow}>
+    <div
+      className={classNames(styles.matchRow, {
+        [styles.win]: score.win === true,
+        [styles.loss]: score.win === false,
+      })}
+    >
       <div>
         <ChampionIcon championId={score.champion} size="small" />
       </div>
