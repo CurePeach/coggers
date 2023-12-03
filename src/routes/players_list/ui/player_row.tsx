@@ -22,8 +22,11 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
     if (champFrequencies[championName]) {
       champFrequencies[championName].frequency += 1;
     } else {
-      champFrequencies[championName].frequency = 1;
-      champFrequencies[championName].id = score.champion;
+      const newFrequency = {
+        frequency: 1,
+        id: score.champion,
+      }
+      champFrequencies[championName] = newFrequency;
     }
   });
 
