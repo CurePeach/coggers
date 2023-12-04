@@ -1,0 +1,45 @@
+@import 'ui/base/colors.css';
+
+.matchRow {
+  width: 750px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0rem;
+  border-radius: 5px;
+}
+
+.win {
+  background-color: var(--blue-blue);
+}
+
+.loss {
+  background-color: var(--pink-pink);
+}
+
+.matchDetails {
+  width: 150px;
+  text-align: left;
+}
+
+.kdaContainer {
+  width: 100px;
+}
+
+.teams {
+  display: flex;
+}
+
+.teamContainer {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
