@@ -1,7 +1,6 @@
 @import 'ui/base/colors.css';
 
 .matchRow {
-  width: 750px;
   min-height: 100px;
   display: flex;
   align-items: center;
