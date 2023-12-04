@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChampionStore } from 'champion/champion_store';
 import { convert } from 'data/players';
 import { ChampionIcon } from 'ui/base/champion_icon/champion_icon';
+import { Container } from 'ui/base/container/container';
 import { AttributeValuePair, EmphasizedText } from 'ui/base/typography';
 
 import styles from './champion_row.module.css';
@@ -58,39 +59,41 @@ export const ChampionRow = ({
     .sort((a, b) => playerWins[b] / playerFrequencies[b] - playerWins[a] / playerFrequencies[a]);
 
   return (
-    <Link to={`../champion/${champion.key}`} className={styles.link}>
-      <div className={`${styles.championRow} ${backgroundStyle}`}>
-        <div className={styles.championName}>
-          <ChampionIcon championId={champion.key} size="medium" />
-          <EmphasizedText>{champion.championName}</EmphasizedText>
+    <Container width="large">
+      <Link to={`../champion/${champion.key}`} className={styles.link}>
+        <div className={`${styles.championRow} ${backgroundStyle}`}>
+          <div className={styles.championName}>
+            <ChampionIcon championId={champion.key} size="medium" />
+            <EmphasizedText>{champion.championName}</EmphasizedText>
+          </div>
+          <div className={styles.details}>
+            {champion.numPicks > 0 && (
+              <AttributeValuePair
+                attribute="Win rate"
+                value={`${(champion.winRate * 100).toFixed(2)}% (${champion.numWins} / ${
+                  champion.numPicks
+                })`}
+              />
+            )}
+            {champion.numBans > 0 && (
+              <AttributeValuePair
+                attribute="Ban rate"
+                value={`${banRate}% (${champion.numBans} / ${numTotalGames})`}
+              />
+            )}
+            <AttributeValuePair
+              attribute="Presence"
+              value={`${presence}% (${numPresence} / ${numTotalGames})`}
+            />
+            {champion.numPicks > 0 && (
+              <AttributeValuePair
+                attribute="Players"
+                value={`${playerList.join(', ')} (${playerList.length})`}
+              />
+            )}
+          </div>
         </div>
-        <div className={styles.details}>
-          {champion.numPicks > 0 && (
-            <AttributeValuePair
-              attribute="Win rate"
-              value={`${(champion.winRate * 100).toFixed(2)}% (${champion.numWins} / ${
-                champion.numPicks
-              })`}
-            />
-          )}
-          {champion.numBans > 0 && (
-            <AttributeValuePair
-              attribute="Ban rate"
-              value={`${banRate}% (${champion.numBans} / ${numTotalGames})`}
-            />
-          )}
-          <AttributeValuePair
-            attribute="Presence"
-            value={`${presence}% (${numPresence} / ${numTotalGames})`}
-          />
-          {champion.numPicks > 0 && (
-            <AttributeValuePair
-              attribute="Players"
-              value={`${playerList.join(', ')} (${playerList.length})`}
-            />
-          )}
-        </div>
-      </div>
-    </Link>
+      </Link>
+    </Container>
   );
 };

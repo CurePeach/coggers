@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { LoaderData, useLoaderData } from 'react-router-typesafe';
 
+import { Container } from 'ui/base/container/container';
 import { AttributeValuePair, Title } from 'ui/base/typography';
 import type { championsListLoader } from 'utils/route_loaders';
 
@@ -26,8 +27,10 @@ export const ChampionsList = () => {
   return (
     <div className={styles.root}>
       <Title>Champions List</Title>
-      {championList}
-      <AttributeValuePair attribute="No presence" value={`${unplayedChampions.join(', ')}`} />
+      <Container display="flex" flexDirection="column" alignItems="center">
+        {championList}
+        <AttributeValuePair attribute="No presence" value={`${unplayedChampions.join(', ')}`} />
+      </Container>
     </div>
   );
 };
