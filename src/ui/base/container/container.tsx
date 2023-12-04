@@ -1,24 +1,45 @@
 import * as React from 'react';
 
-type Width = 'large' | 'medium';
+type Width = 'auto' | 'large' | 'medium';
+type Display = 'block' | 'flex';
+type FlexDirection = 'row' | 'column';
 
 export type ContainerProps = {
   width?: Width;
+  display?: Display;
+  flexDirection?: FlexDirection;
+  justifyContent?: 'center';
+  alignItems?: 'center';
   children: React.ReactNode;
 };
 
-export const Container = ({ width = 'medium', children }: ContainerProps) => {
+export const Container = ({
+  width = 'auto',
+  display = 'block',
+  flexDirection = 'row',
+  justifyContent = 'center',
+  alignItems = 'center',
+  children,
+}: ContainerProps) => {
   const mapWidth = (width: Width) => {
     switch (width) {
+      case 'auto':
+        return '100%';
       case 'large':
-        return 900;
+        return '900px';
       case 'medium':
-        return 750;
+        return '750px';
     }
   };
 
   return React.createElement('div', {
-    width: mapWidth(width),
+    style: {
+      width: mapWidth(width),
+      display,
+      flexDirection,
+      justifyContent,
+      alignItems,
+    },
     children: children,
   });
 };
