@@ -9,7 +9,8 @@ export type ContainerProps = {
   display?: Display;
   flexDirection?: FlexDirection;
   justifyContent?: 'center' | 'space-around';
-  alignItems?: 'center';
+  alignItems?: 'center' | 'normal';
+  textAlign?: 'center' | 'start';
   className?: string;
   children: React.ReactNode;
 };
@@ -20,13 +21,14 @@ export const Container = ({
   flexDirection = 'row',
   justifyContent = 'center',
   alignItems = 'center',
+  textAlign = 'center',
   className,
   children,
 }: ContainerProps) => {
   const mapWidth = (width: Width) => {
     switch (width) {
       case 'auto':
-        return '100%';
+        return '';
       case 'large':
         return '900px';
       case 'medium':
@@ -41,6 +43,7 @@ export const Container = ({
       flexDirection,
       justifyContent,
       alignItems,
+      textAlign,
     },
     className: className,
     children: children,

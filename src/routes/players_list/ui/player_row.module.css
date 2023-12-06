@@ -14,17 +14,11 @@
 .playerName {
   width: 30%;
   padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .details {
   width: 70%;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   text-align: start;
 }
 
