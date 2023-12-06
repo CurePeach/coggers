@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { ChampionStore } from 'champion/champion_store';
@@ -61,7 +62,7 @@ export const ChampionRow = ({
   return (
     <Container width="large">
       <Link to={`../champion/${champion.key}`} className={styles.link}>
-        <div className={`${styles.championRow} ${backgroundStyle}`}>
+        <Container display="flex" className={classNames(styles.championRow, backgroundStyle)}>
           <div className={styles.championName}>
             <ChampionIcon championId={champion.key} size="medium" />
             <EmphasizedText>{champion.championName}</EmphasizedText>
@@ -92,7 +93,7 @@ export const ChampionRow = ({
               />
             )}
           </div>
-        </div>
+        </Container>
       </Link>
     </Container>
   );

@@ -1,9 +1,8 @@
 @import 'ui/base/colors.css';
 
 .championRow {
-  display: flex;
   padding: 0.5rem 1rem;
-  margin: 1rem 0rem;
+  margin: 0.5rem 0rem;
   background-color: var(--blue-blue);
   border-radius: 5px;
 }

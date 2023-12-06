@@ -10,6 +10,7 @@ export type ContainerProps = {
   flexDirection?: FlexDirection;
   justifyContent?: 'center';
   alignItems?: 'center';
+  className?: string;
   children: React.ReactNode;
 };
 
@@ -19,6 +20,7 @@ export const Container = ({
   flexDirection = 'row',
   justifyContent = 'center',
   alignItems = 'center',
+  className,
   children,
 }: ContainerProps) => {
   const mapWidth = (width: Width) => {
@@ -40,6 +42,7 @@ export const Container = ({
       justifyContent,
       alignItems,
     },
+    className: className,
     children: children,
   });
 };
