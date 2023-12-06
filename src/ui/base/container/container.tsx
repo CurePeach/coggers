@@ -8,7 +8,7 @@ export type ContainerProps = {
   width?: Width;
   display?: Display;
   flexDirection?: FlexDirection;
-  justifyContent?: 'center';
+  justifyContent?: 'center' | 'space-around';
   alignItems?: 'center';
   className?: string;
   children: React.ReactNode;

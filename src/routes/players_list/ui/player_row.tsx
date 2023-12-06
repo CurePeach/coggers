@@ -49,25 +49,28 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
   });
 
   return (
-    <Container width="large">
-      <div className={styles.playerRow}>
-        <div className={styles.playerName}>
-          <Subheading>
-            <Link to={`../player/${player.key}`} className={styles.link}>
-              {player.playerName}
-            </Link>
-          </Subheading>
-        </div>
-        <div className={styles.details}>
-          <AttributeValuePair
-            attribute="Win rate"
-            value={`${(player.winRate * 100).toFixed(2)}% (${player.numWins} / ${player.numGames})`}
-          />
-          <AttributeValuePair attribute="Number of MVPs" value={player.numMvps.toString()} />
-          <AttributeValuePair attribute="Number of Aces" value={player.numAces.toString()} />
-          <div>
-            <b>Champions played:</b> {champList} ({champList.length})
-          </div>
+    <Container
+      width="large"
+      display="flex"
+      justifyContent="space-around"
+      className={styles.playerRow}
+    >
+      <div className={styles.playerName}>
+        <Subheading>
+          <Link to={`../player/${player.key}`} className={styles.link}>
+            {player.playerName}
+          </Link>
+        </Subheading>
+      </div>
+      <div className={styles.details}>
+        <AttributeValuePair
+          attribute="Win rate"
+          value={`${(player.winRate * 100).toFixed(2)}% (${player.numWins} / ${player.numGames})`}
+        />
+        <AttributeValuePair attribute="Number of MVPs" value={player.numMvps.toString()} />
+        <AttributeValuePair attribute="Number of Aces" value={player.numAces.toString()} />
+        <div>
+          <b>Champions played:</b> {champList} ({champList.length})
         </div>
       </div>
     </Container>
