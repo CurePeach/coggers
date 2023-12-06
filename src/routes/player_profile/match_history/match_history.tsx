@@ -20,7 +20,7 @@ export const MatchHistory = ({ player, allMatches }: MatchHistoryProps) => {
   });
 
   return (
-    <Container width="auto" display="flex" flexDirection="column" alignItems="center">
+    <Container display="flex" flexDirection="column" alignItems="center">
       <Subheading>Match History</Subheading>
       {<div>{matches}</div>}
     </Container>

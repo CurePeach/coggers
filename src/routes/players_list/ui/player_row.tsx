@@ -52,24 +52,30 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
     <Container
       width="large"
       display="flex"
+      alignItems="center"
       justifyContent="space-around"
       className={styles.playerRow}
     >
-      <Container display='flex' className={styles.playerName}>
+      <Container
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        className={styles.playerName}
+      >
         <Subheading>
           <Link to={`../player/${player.key}`} className={styles.link}>
             {player.playerName}
           </Link>
         </Subheading>
       </Container>
-      <Container display="flex" flexDirection="column" alignItems='normal' textAlign="start" className={styles.details}>
+      <Container display="flex" flexDirection="column" textAlign="start" className={styles.details}>
         <AttributeValuePair
           attribute="Win rate"
           value={`${(player.winRate * 100).toFixed(2)}% (${player.numWins} / ${player.numGames})`}
         />
         <AttributeValuePair attribute="Number of MVPs" value={player.numMvps.toString()} />
         <AttributeValuePair attribute="Number of Aces" value={player.numAces.toString()} />
-        <Container textAlign='start'>
+        <Container>
           <EmphasizedText>Champions played:</EmphasizedText> {champList} ({champList.length})
         </Container>
       </Container>

@@ -6,24 +6,22 @@ type FlexDirection = 'row' | 'column';
 
 export type ContainerProps = {
   width?: Width;
+
   display?: Display;
   flexDirection?: FlexDirection;
   justifyContent?: 'center' | 'space-around';
   alignItems?: 'center' | 'normal';
   textAlign?: 'center' | 'start';
+
   className?: string;
   children: React.ReactNode;
 };
 
 export const Container = ({
   width = 'auto',
-  display = 'block',
-  flexDirection = 'row',
-  justifyContent = 'center',
-  alignItems = 'center',
-  textAlign = 'center',
   className,
   children,
+  ...styleProps
 }: ContainerProps) => {
   const mapWidth = (width: Width) => {
     switch (width) {
@@ -39,11 +37,7 @@ export const Container = ({
   return React.createElement('div', {
     style: {
       width: mapWidth(width),
-      display,
-      flexDirection,
-      justifyContent,
-      alignItems,
-      textAlign,
+      ...styleProps,
     },
     className: className,
     children: children,
