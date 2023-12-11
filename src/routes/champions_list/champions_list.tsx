@@ -1,14 +1,18 @@
 import * as React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { LoaderData, useLoaderData } from 'react-router-typesafe';
 
 import { Container } from 'ui/base/container/container';
 import { AttributeValuePair, Title } from 'ui/base/typography';
-import type { championsListLoader } from 'utils/route_loaders';
+import type { OutletContext, championsListLoader } from 'utils/route_loaders';
 
 import styles from './champions_list.module.css';
 import { ChampionRow } from './ui/champion_row';
 
 export const ChampionsList = () => {
+  const { setCurrentPage } = useOutletContext<OutletContext>();
+  setCurrentPage('champions');
+
   const data = useLoaderData() as LoaderData<typeof championsListLoader>;
   const numTotalGames = data.matches.length;
 

@@ -1,9 +1,13 @@
 import * as React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { LoaderData, useLoaderData } from 'react-router-typesafe';
 
-import type { playerPairsLoader } from 'utils/route_loaders';
+import type { OutletContext, playerPairsLoader } from 'utils/route_loaders';
 
 export const PlayerPairs = () => {
+  const { setCurrentPage } = useOutletContext<OutletContext>();
+  setCurrentPage('pairs');
+
   const data = useLoaderData() as LoaderData<typeof playerPairsLoader>;
 
   const pairsList: JSX.Element[] = [];
