@@ -1,5 +1,11 @@
 @import 'ui/base/colors.css';
 
+.headerContainer {
+  top: 0px;
+  position: sticky;
+  background-color: var(--off-white);
+}
+
 .header {
   background-color: var(--blue-blue);
   margin: 10px;

@@ -13,7 +13,7 @@ export type HeaderProps = {
 
 export const Header = ({ currentPage }: HeaderProps) => {
   return (
-    <Container display="flex" justifyContent="center">
+    <Container display="flex" justifyContent="center" className={styles.headerContainer}>
       <Container
         width="large"
         display="flex"
