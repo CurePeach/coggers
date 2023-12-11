@@ -13,6 +13,7 @@ export type ContainerProps = {
   alignItems?: 'center' | 'normal';
   textAlign?: 'center' | 'start';
 
+  // TODO: deprecate this field
   className?: string;
   children: React.ReactNode;
 };
