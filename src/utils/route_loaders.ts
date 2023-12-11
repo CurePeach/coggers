@@ -85,3 +85,10 @@ export const playersListLoader = makeLoader(() => {
 export const matchProfileLoader = makeLoader(() => {
   return { champions: champions, players: players, playerPairs: playerPairs, matches: allMatches };
 });
+
+export type Page = 'matches' | 'champions' | 'players' | 'pairs';
+
+export type OutletContext = {
+  currentPage: Page | undefined;
+  setCurrentPage: React.Dispatch<React.SetStateAction<Page | undefined>>;
+};

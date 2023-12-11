@@ -1,13 +1,17 @@
 import * as React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { LoaderData, useLoaderData } from 'react-router-typesafe';
 
 import { Container } from 'ui/base/container/container';
 import { Title } from 'ui/base/typography';
-import type { playersListLoader } from 'utils/route_loaders';
+import type { OutletContext, playersListLoader } from 'utils/route_loaders';
 
 import { PlayerRow } from './ui/player_row';
 
 export const PlayersList = () => {
+  const { setCurrentPage } = useOutletContext<OutletContext>();
+  setCurrentPage('players');
+
   const data = useLoaderData() as LoaderData<typeof playersListLoader>;
 
   const playersList: JSX.Element[] = [];
