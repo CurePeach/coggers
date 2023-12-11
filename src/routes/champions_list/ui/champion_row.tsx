@@ -63,11 +63,23 @@ export const ChampionRow = ({
     <Container width="large">
       <Link to={`../champion/${champion.key}`} className={styles.link}>
         <Container display="flex" className={classNames(styles.championRow, backgroundStyle)}>
-          <div className={styles.championName}>
+          <Container
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            className={styles.championName}
+          >
             <ChampionIcon championId={champion.key} size="medium" />
             <EmphasizedText>{champion.championName}</EmphasizedText>
-          </div>
-          <div className={styles.details}>
+          </Container>
+          <Container
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            textAlign="start"
+            className={styles.details}
+          >
             {champion.numPicks > 0 && (
               <AttributeValuePair
                 attribute="Win rate"
@@ -92,7 +104,7 @@ export const ChampionRow = ({
                 value={`${playerList.join(', ')} (${playerList.length})`}
               />
             )}
-          </div>
+          </Container>
         </Container>
       </Link>
     </Container>
