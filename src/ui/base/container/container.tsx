@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-type Width = 'auto' | 'large' | 'medium';
+type Width = 'auto' | 'full' | 'large' | 'medium';
 type Display = 'block' | 'flex';
 type FlexDirection = 'row' | 'column';
 
@@ -28,6 +28,8 @@ export const Container = ({
     switch (width) {
       case 'auto':
         return '';
+      case 'full':
+        return '100%';
       case 'large':
         return '900px';
       case 'medium':
