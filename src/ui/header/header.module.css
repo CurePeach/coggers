@@ -1,0 +1,21 @@
+@import 'ui/base/colors.css';
+
+.header {
+  background-color: var(--blue-blue);
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.linkContainer {
+  padding: 10px;
+}
+
+.linkContainer:hover {
+  background-color: var(--dark-blue);
+  border-radius: 10px;
+}
