@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { ChampionName as ChampionId, convert } from 'data/champions';
 import type { PlayerStore } from 'player/player_store';
-import { AttributeValuePair, Subheading } from 'ui/base/typography';
+import { Container } from 'ui/base/container/container';
+import { AttributeValuePair, EmphasizedText, Subheading } from 'ui/base/typography';
 import { ChampionName } from 'ui/champion_name/champion_name';
 
 import styles from './player_row.module.css';
@@ -48,25 +49,36 @@ export const PlayerRow = ({ player }: { player: PlayerStore }) => {
   });
 
   return (
-    <div key={player.key} className={styles.playerRow}>
-      <div className={styles.playerName}>
+    <Container
+      width="large"
+      display="flex"
+      alignItems="center"
+      justifyContent="space-around"
+      className={styles.playerRow}
+    >
+      <Container
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        className={styles.playerName}
+      >
         <Subheading>
           <Link to={`../player/${player.key}`} className={styles.link}>
             {player.playerName}
           </Link>
         </Subheading>
-      </div>
-      <div className={styles.details}>
+      </Container>
+      <Container display="flex" flexDirection="column" textAlign="start" className={styles.details}>
         <AttributeValuePair
           attribute="Win rate"
           value={`${(player.winRate * 100).toFixed(2)}% (${player.numWins} / ${player.numGames})`}
         />
         <AttributeValuePair attribute="Number of MVPs" value={player.numMvps.toString()} />
         <AttributeValuePair attribute="Number of Aces" value={player.numAces.toString()} />
-        <div>
-          <b>Champions played:</b> {champList} ({champList.length})
-        </div>
-      </div>
-    </div>
+        <Container>
+          <EmphasizedText>Champions played:</EmphasizedText> {champList} ({champList.length})
+        </Container>
+      </Container>
+    </Container>
   );
 };

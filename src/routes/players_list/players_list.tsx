@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { LoaderData, useLoaderData } from 'react-router-typesafe';
 
+import { Container } from 'ui/base/container/container';
 import { Title } from 'ui/base/typography';
 import type { playersListLoader } from 'utils/route_loaders';
 
@@ -21,7 +22,9 @@ export const PlayersList = () => {
   return (
     <div>
       <Title>Players List</Title>
-      {playersList}
+      <Container width="auto" display="flex" flexDirection="column" alignItems="center">
+        {playersList}
+      </Container>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import { MatchStore } from 'match/match_store';
 import { PlayerStore } from 'player/player_store';
+import { Container } from 'ui/base/container/container';
 import { Subheading } from 'ui/base/typography';
 
-import styles from './match_history.module.css';
 import { MatchRow } from './match_row/match_row';
 
 export type MatchHistoryProps = {
@@ -20,9 +20,9 @@ export const MatchHistory = ({ player, allMatches }: MatchHistoryProps) => {
   });
 
   return (
-    <div className={styles.matchHistoryContainer}>
+    <Container display="flex" flexDirection="column" alignItems="center">
       <Subheading>Match History</Subheading>
-      <div>{matches}</div>
-    </div>
+      {<div>{matches}</div>}
+    </Container>
   );
 };

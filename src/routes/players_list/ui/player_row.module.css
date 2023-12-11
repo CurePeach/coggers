@@ -1,10 +1,8 @@
 @import 'ui/base/colors.css';
 
 .playerRow {
-  display: flex;
-  justify-content: space-around;
   padding: 0.5rem 1rem;
-  margin: 1rem 10rem;
+  margin: 0.5rem 0rem;
   background-color: var(--blue-blue);
   border-radius: 5px;
 }
@@ -16,17 +14,11 @@
 .playerName {
   width: 30%;
   padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .details {
   width: 70%;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   text-align: start;
 }
 
